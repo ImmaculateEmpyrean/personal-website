@@ -24,7 +24,7 @@ export default {
 
 <style lang="scss" scoped>
     .picture-box{
-        flex: 1 1 60%;
+        flex: 1 1 55%;
         border : 1px solid blue;  
 
         background-repeat: no-repeat;
