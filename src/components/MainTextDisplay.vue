@@ -19,7 +19,7 @@ export default {
 
 <style lang="scss" scoped>
     .text-box {
-        flex: 1 1 50%;
+        flex: 1 1 35%;
         border : 1px solid blue;
 
         display: flex;
@@ -55,6 +55,7 @@ export default {
     }
 
     p{
+        margin-top: 14px;
         font-family: Futura Bk;
         font-style: normal;
         font-weight: normal;
