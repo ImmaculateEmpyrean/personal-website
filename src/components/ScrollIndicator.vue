@@ -25,7 +25,7 @@ export default {
 
 <style lang="scss" scoped>
     .scroll-box {
-        flex: 0 0 5%;
+        flex: 1 1 5%;
         border : 1px solid blue;
 
         display: flex;
