@@ -8,9 +8,9 @@
 
 
 <script>
-import ScrollIndicator  from '@/ScrollIndicator.vue' ;
-import MainTextDisplay  from '@/MainTextDisplay.vue' ;
-import MainImageDisplay from '@/MainImageDisplay.vue';
+import ScrollIndicator  from '@/components/ScrollIndicator.vue' ;
+import MainTextDisplay  from '@/components/MainTextDisplay.vue' ;
+import MainImageDisplay from '@/components/MainImageDisplay.vue';
 
 export default {
     name: "Content",
@@ -24,5 +24,10 @@ export default {
 
 
 <style lang="scss" scoped>
+    .container{
+        flex: 1 1 93%;
+        border: 1px solid red;
 
+        display: flex;
+    }
 </style>

@@ -21,6 +21,8 @@ export default {
 
 
 <style lang="scss">
+  @import '../src/assets/sass/_font.scss';
+
   *,*::before,*::after{
       margin: 0;
       padding: 0;
@@ -35,7 +37,7 @@ export default {
   }
 
   body{
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Futura Bk', sans-serif;
       overflow: hidden;
   }
 
