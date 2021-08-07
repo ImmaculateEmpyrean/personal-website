@@ -37,7 +37,7 @@ export default {
   }
 
   body{
-      font-family: 'Futura Bk', sans-serif;
+      font-family: 'Futura', sans-serif;
       overflow: hidden;
   }
 
