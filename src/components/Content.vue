@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <ScrollIndicator  />
+        <ScrollIndicator  :currentPage="currentPage"/>
         <MainTextDisplay  />
         <MainImageDisplay />
     </div>
@@ -18,6 +18,13 @@ export default {
         ScrollIndicator,
         MainTextDisplay,
         MainImageDisplay
+    },
+
+    props:{
+        currentPage: {
+            type: Number,
+            default: 4
+        }
     }
 }
 </script>
