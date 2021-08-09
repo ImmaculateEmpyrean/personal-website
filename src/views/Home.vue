@@ -1,11 +1,21 @@
 <template>
-  this is the home view
+    <Content/>
 </template>
 
 <script>
+import Content from '@/components/Content.vue';
+
 export default {
   name: 'Home',
   components: {
+    Content
+  },
+  data (){
+    return {
+      
+    }
+  },
+  methods:{
     
   }
 }

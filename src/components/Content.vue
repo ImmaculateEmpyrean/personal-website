@@ -1,29 +1,29 @@
 <template>
     <div class="container">
-        <ScrollIndicator  :currentPage="currentPage"/>
         <MainTextDisplay  />
-        <MainImageDisplay />
+        <MainImageDisplay :imagePath="imagePath"/>
     </div>
 </template>
 
 
 <script>
-import ScrollIndicator  from '@/components/ScrollIndicator.vue' ;
 import MainTextDisplay  from '@/components/MainTextDisplay.vue' ;
 import MainImageDisplay from '@/components/MainImageDisplay.vue';
 
 export default {
     name: "Content",
     components: {
-        ScrollIndicator,
         MainTextDisplay,
         MainImageDisplay
     },
 
     props:{
-        currentPage: {
-            type: Number,
-            default: 4
+        
+    },
+
+    data(){
+        return {
+            imagePath: require("@/assets/sharpended-home-image.png")
         }
     }
 }

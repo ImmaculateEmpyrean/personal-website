@@ -1,19 +1,24 @@
 <template>
     <div class="page">
       <Navbar />
-      <Content />>
+      <div class="router-content">
+        <ScrollIndicator />
+        <router-view></router-view>
+      </div>
     </div>
 </template>
 
 
 <script>
 import Navbar from '@/components/Navbar.vue';
+import ScrollIndicator from '@/components/ScrollIndicator.vue';
 import Content from '@/components/Content.vue';
 
 export default {
   name: "App",
   components: {
     Navbar,
+    ScrollIndicator,
     Content
   }
 }
@@ -45,5 +50,10 @@ export default {
     display: flex;
     flex-direction: column;
     height: 100vh;
+  }
+
+  .router-content{
+    flex: 1 1 95%;
+    display: flex;
   }
 </style>
