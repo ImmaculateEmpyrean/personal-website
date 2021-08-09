@@ -1,5 +1,6 @@
 <template>
-    <Content /> 
+    <Content :heading1="heading1" :heading2="heading2" :caption="caption" :description="description"
+             :showCaption="showCaption" :showButton="showButton" :imagePath="imagePath" /> 
 </template>
 
 <script>
@@ -22,7 +23,7 @@ export default {
                      also with a strong foray into the land of \
                      embeded programming and databases.",
         showButton: true,
-        imagePath: require("@/assets/sharpended-home-image.png")
+        imagePath: require("@/assets/dev-journey.png")
     }
     }
 }

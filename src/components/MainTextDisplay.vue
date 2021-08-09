@@ -7,11 +7,13 @@
         </h1>
         <img src="@/assets/logo-line.svg" alt="logo-line" width = "250">
         <p>{{description}}</p>
-        <button v-show="showButton">Hanna</button>
+        <Button :buttonText="buttonText" :showButton="showButton"/>
     </div>
 </template>
 
 <script>
+import Button from '@/components/Button.vue';
+
 export default {
     name: "MainTextDisplay",
     props:{
@@ -38,7 +40,15 @@ export default {
         showButton:{
             type: Boolean,
             default: false
+        },
+        buttonText:{
+            type: String,
+            default: "Tell Me More"
         }
+    },
+
+    components:{
+        Button
     }
 }
 </script>
@@ -90,25 +100,4 @@ export default {
         letter-spacing: 0.2em;
         color: #000000;
     }
-
-    button{
-        transition: background-color 1s,
-                    color 1s;
-
-        background-color: #000000;
-        color: white;
-        padding: 1.8vh 4vh;
-        border: 5px solid black;
-
-        margin-left: auto;
-        margin-right: 14px;
-        font-size: 20px;
-
-        &:hover{
-            color: black;
-            background-color: white;
-            border: 5px solid black;
-        }
-    }
-
 </style>

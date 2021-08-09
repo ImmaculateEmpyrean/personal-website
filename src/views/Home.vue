@@ -19,7 +19,7 @@ export default {
         showCaption: true,
         description: "Video game programmer & full stack web and database designer as well as developer",
         showButton: false,
-        imagePath: require("@/assets/sharpended-home-image.png")
+        imagePath: require("@/assets/home.png")
     }
   },
   methods:{
