@@ -3,7 +3,16 @@
       <Navbar />
       <div class="router-content">
         <ScrollIndicator />
-        <router-view></router-view>
+        <router-view v-slot="{ Component }">
+          <transition 
+            name="routerTransition"
+            enter-active-class="animate__animated animate__backInDown"
+            leave-active-class="animate__animated animate__backOutDown"
+            mode="out-in"
+          >
+              <component :is="Component"></component>
+          </transition>
+        </router-view>
       </div>
     </div>
 </template>
