@@ -2,7 +2,7 @@
     <div class="nav-bar">
             <div class="left">
                 <img src="@/assets/logo.svg" alt="logo-icon">
-                <h1>Veeru Empyrean</h1>
+                <h1 class="text">Veeru Empyrean</h1>
             </div>
             
             <div class="right">
@@ -11,7 +11,7 @@
                         <li><span class="iconify" data-inline="false" data-icon="akar-icons:github-fill"></span></li>
                         <li><span class="iconify" data-inline="false" data-icon="ph:discord-logo-light"></span></li>
                         <li><span class="iconify" data-inline="false" data-icon="bx:bxl-firefox"></span></li>
-                        <li> <a href="#">LinkedIn</a> </li>
+                        <li> <a href="#" class="text">LinkedIn</a> </li>
                     </ul>
                 </div>
                 <div class="hamburger-menu">
@@ -45,6 +45,17 @@
                 column-gap: 7px;
                 font-size: 30px;
             }
+        }
+
+        .text{
+            font-family: Futura Bk;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 1.5vw;
+            line-height: 135.8%;
+            /* or 33px */
+            letter-spacing: 0.2em;
+            text-transform: capitalize;
         }
     }
 </style>
