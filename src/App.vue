@@ -6,11 +6,15 @@
         <router-view v-slot="{ Component }">
           <transition 
             name="routerTransition"
-            enter-active-class="animate__animated animate__backInDown"
-            leave-active-class="animate__animated animate__backOutDown"
+            :enter-active-class="pageEnterAnimation"
+            :leave-active-class="pageLeaveAnimation"
             mode="out-in"
           >
-              <component :is="Component"></component>
+              <component 
+                :is="Component"
+                @renderPreviousView="renderPreviousView"
+                @renderNextView="renderNextView"
+              ></component>
           </transition>
         </router-view>
       </div>
@@ -29,6 +33,24 @@ export default {
     Navbar,
     ScrollIndicator,
     Content
+  },
+  data(){
+    return {
+      pageEnterAnimation: "animate__animated animate__backInDown",
+      pageLeaveAnimation: "animate__animated animate__backOutDown"
+    }
+  },
+  methods:{
+    renderPreviousView(){
+        this.pageEnterAnimation = "animate__animated animate__backInDown";
+        this.pageLeaveAnimation = "animate__animated animate__backOutDown";
+
+        console.log('render previous view called');
+    },
+    renderNextView(){
+        this.pageEnterAnimation = "animate__animated animate__backInUp";
+        this.pageLeaveAnimation = "animate__animated animate__backOutUp";
+    }
   }
 }
 </script>

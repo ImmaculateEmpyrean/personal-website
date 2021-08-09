@@ -24,8 +24,9 @@ export default {
         }
     },
     methods:{
-        wheelEvent(e){
+        async wheelEvent(e){
              if (e.deltaY < 0) {
+                await this.$emit("renderPreviousView");
                 this.$router.push(this.previous);
             } 
         }
