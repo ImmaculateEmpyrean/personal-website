@@ -3,8 +3,13 @@
         <MainTextDisplay :heading1="heading1" :heading2="heading2" :description="description"
                          :showButton="showButton" :showCaption="showCaption"/>
         <ul>
-            <li>Send me an Email at <strong>immaculateEmpyrean@gmail.com</strong></li>
-            <li>I am on Discord: <img src= "@/assets/discord-profile-picture.png"> <strong>empyrean#4242</strong></li>
+            <li>I recieve mail : <strong>immaculateEmpyrean@gmail.com</strong></li>
+            <li>I am on Discord:
+                <span class="discord-id">
+                    <img src= "@/assets/discord-profile-picture.png">
+                    <strong>empyrean#4242</strong>
+                </span>
+            </li>
             <li><a href="">Have a Github preference?</a></li>
             <li>My LinkedIn page</li>
             <li>Leave a message here on this site</li>
@@ -26,7 +31,7 @@ export default {
             heading2: "Us Talk",
             showCaption: false,
             showButton: false,
-            description: ""
+            description: "I want us to break the ice and communicate with each other."
         }
     }
 }
@@ -42,8 +47,30 @@ export default {
     }
 
     li{
-        img{
-            border-radius: 50%;
+        padding: 1vh 1vw;
+        margin: 1vh 1vw;
+        margin-left: 0;
+        cursor: pointer;
+        
+        border: 2px solid black;
+
+        font-family: "futura";
+        font-size: 1.5vw;
+
+        .discord-id{
+            display: inline-flex;
+            align-items: center;
+            column-gap: 7px;
+
+            border: 1px solid black;
+            padding: 7px;
+            //border-radius: 50%;
+
+            img{
+                width: 75px;
+                border-radius: 50%;
+            }
         }
+        
     }
 </style>
