@@ -1,6 +1,7 @@
 <template>
     <Content :heading1="heading1" :heading2="heading2" :caption="caption" :description="description"
-             :showCaption="showCaption" :showButton="showButton" :imagePath="imagePath" />
+             :showCaption="showCaption" :showButton="showButton" :imagePath="imagePath" 
+             @wheel="wheelEvent"/>
 </template>
 
 <script>
@@ -19,11 +20,18 @@ export default {
         showCaption: true,
         description: "Video game programmer & full stack web and database designer as well as developer",
         showButton: false,
-        imagePath: require("@/assets/home.png")
+        imagePath: require("@/assets/home.png"),
+
+        next: "DevJourney",
+        prev: null
     }
   },
   methods:{
-    
+    wheelEvent(e){
+             if (e.deltaY > 0) {
+                this.$router.push(this.next);
+            }
+        }
   }
 }
 </script>

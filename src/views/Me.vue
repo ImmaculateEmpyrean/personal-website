@@ -1,6 +1,7 @@
 <template>
     <Content :heading1="heading1" :heading2="heading2" :caption="caption" :description="description"
-             :showCaption="showCaption" :showButton="showButton" :imagePath="imagePath"/>
+             :showCaption="showCaption" :showButton="showButton" :imagePath="imagePath"
+             @wheel="wheelEvent" />
 </template>
 
 <script>
@@ -20,7 +21,19 @@ export default {
             description: "I was definitely the cool kid (PROBABLY), reading russian and german literature \
                                         definitely gave me enough imagination to believe something like that.",
             showButton: true,
-            imagePath: require("@/assets/me.png")
+            imagePath: require("@/assets/me.png"),
+
+            next: "ContactMe",
+            previous: "DevJourney"
+        }
+    },
+    methods:{
+        wheelEvent(e){
+             if (e.deltaY < 0) {
+                this.$router.push(this.previous);
+            } else if (e.deltaY > 0) {
+                this.$router.push(this.next);
+            }
         }
     }
 }

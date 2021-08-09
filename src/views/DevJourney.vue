@@ -1,6 +1,7 @@
 <template>
     <Content :heading1="heading1" :heading2="heading2" :caption="caption" :description="description"
-             :showCaption="showCaption" :showButton="showButton" :imagePath="imagePath" /> 
+             :showCaption="showCaption" :showButton="showButton" :imagePath="imagePath" 
+             @wheel="wheelEvent"/> 
 </template>
 
 <script>
@@ -13,18 +14,30 @@ export default {
     },
     data (){
         return {
-        heading1:"Dev",
-        heading2:"Journey",
-        caption: "NULL",
-        showCaption: false,
-        description: "My adventure in the land of computer\
-                     science is filled with exciting tales of\
-                     full-stack web, video games,video game engines ending\
-                     also with a strong foray into the land of \
-                     embeded programming and databases.",
-        showButton: true,
-        imagePath: require("@/assets/dev-journey.png")
-    }
+            heading1:"Dev",
+            heading2:"Journey",
+            caption: "NULL",
+            showCaption: false,
+            description: "My adventure in the land of computer\
+                        science is filled with exciting tales of\
+                        full-stack web, video games,video game engines ending\
+                        also with a strong foray into the land of \
+                        embeded programming and databases.",
+            showButton: true,
+            imagePath: require("@/assets/dev-journey.png"),
+
+            next: "Me",
+            previous: "/"
+        }
+    },
+    methods:{
+        wheelEvent(e){
+             if (e.deltaY < 0) {
+                this.$router.push(this.previous);
+            } else if (e.deltaY > 0) {
+                this.$router.push(this.next);
+            }
+        }
     }
 }
 </script>

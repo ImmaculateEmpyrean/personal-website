@@ -1,5 +1,5 @@
 <template>
-    <div class="contact-wrapper">
+    <div class="contact-wrapper" @wheel="wheelEvent">
         <ContactPanel />
         <MainImageDisplay :imagePath="imagePath" />
     </div>
@@ -17,7 +17,17 @@ export default {
     },
     data(){
         return {
-            imagePath: require('@/assets/contact-me.png')
+            imagePath: require('@/assets/contact-me.png'),
+
+            next: null,
+            previous: "Me"
+        }
+    },
+    methods:{
+        wheelEvent(e){
+             if (e.deltaY < 0) {
+                this.$router.push(this.previous);
+            } 
         }
     }
 }
