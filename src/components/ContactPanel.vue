@@ -3,7 +3,7 @@
         <MainTextDisplay :heading1="heading1" :heading2="heading2" :description="description"
                          :showButton="showButton" :showCaption="showCaption"/>
         <ul>
-            <li>I recieve mail : <strong>immaculateEmpyrean@gmail.com</strong></li>
+            <li>I recieve mail : <strong>ImmaculateEmpyrean@gmail.com</strong></li>
             <li>I am on Discord:
                 <span class="discord-id">
                     <img src= "@/assets/discord-profile-picture.png">
@@ -51,7 +51,7 @@ export default {
         margin: 1vh 1vw;
         margin-left: 0;
         cursor: pointer;
-        
+
         border: 2px solid black;
 
         font-family: "futura";
