@@ -73,8 +73,14 @@ export default {
 
                     typewriterSignature
                         .typeString('Yours Sincierly,<br/>Veeru Empyrean.')
+                        .callFunction(function(){
+                            let lineLogo = this.$el.querySelector('#line-logo');
+                            lineLogo.classList.add('show');
+                            lineLogo.classList.add('animate__animated');
+                            lineLogo.classList.add('animate__fadeInLeft');
+                        },this)
                         .start();
-                })
+                },this)
                 .start();
     }
 }
@@ -99,8 +105,14 @@ export default {
     #signature{
         margin-bottom: 0;
     }
+
     #line-logo{
+        display: none;
         margin-left: 48px;
         margin-top: 7px;
+    }
+
+    #line-logo.show{
+        display: block;
     }
 </style>
