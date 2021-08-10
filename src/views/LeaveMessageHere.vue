@@ -10,21 +10,26 @@
                 <div class="field-body">
                     <div class="field">
                         <p class="control has-icons-left">
-                            <input class="input" type="text" placeholder="Name">
+                            <input class="input" type="text" placeholder="Name" id="nameField">
                             <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                             </span>
+                            <span v-show="nameFieldWarning"><p class="has-text-danger">please enter a valid name</p></span>
                         </p>
                     </div>
                     <div class="field">
                         <p class="control has-icons-left has-icons-right">
-                            <input class="input is-success" type="email" placeholder="Email" value="alex@smith.com">
+                            <input class="input" type="email" placeholder="Email" id="emailField">
                             <span class="icon is-small is-left">
                             <i class="fas fa-envelope"></i>
                             </span>
-                            <span class="icon is-small is-right">
+                            <span v-show="!emailFieldWarning" class="icon is-small is-right">
                             <i class="fas fa-check"></i>
                             </span>
+                            <span v-show="emailFieldWarning" class="icon is-small is-right">
+                            <i class="fas fa-exclamation"></i>
+                            </span>
+                            <span v-show="emailFieldWarning"><p class="has-text-danger">please enter a valid email id</p></span>
                         </p>
                     </div>
                 </div>
@@ -260,7 +265,8 @@
                         </div>
 
                         <p class="control">
-                            <input class="input" type="tel" placeholder="Your phone number">
+                            <input class="input" type="tel" placeholder="Your phone number" id="phoneField">
+                            <span v-show="phoneFieldWarning"><p class="has-text-danger">please enter a valid phone number</p></span>
                         </p>
                     </div>
                 </div>
@@ -298,7 +304,7 @@
                                 Yes
                             </label>
                             <label class="radio">
-                                <input type="radio" name="member">
+                                <input type="radio" name="member" checked>
                                 No
                             </label>
                         </div>
@@ -313,11 +319,9 @@
                 <div class="field-body">
                     <div class="field">
                         <div class="control">
-                            <input class="input" type="text" placeholder="e.g. Partnership Opportunity">
+                            <input class="input" type="text" placeholder="e.g. Partnership Opportunity" id="subjectField">
                         </div>
-                        <p class="help is-danger">
-                            <!-- can write something like - This field is required if the user presses Send Message Without Filling This Field-->
-                        </p>
+                        <p class="has-text-danger" v-show="subjectFieldWarning">please enter a valid subject</p>
                     </div>
                 </div>
             </div>
@@ -329,8 +333,9 @@
             <div class="field-body">
                 <div class="field">
                     <div class="control">
-                        <textarea class="textarea" placeholder="Please Enter Your Message Here.."></textarea>
+                        <textarea class="textarea" placeholder="Please Enter Your Message Here.." id="messageField"></textarea>
                     </div>
+                    <p class="has-text-danger" v-show="messageFieldWarning">the message cannot be empty.</p>
                 </div>
             </div>
         </div>
@@ -342,7 +347,7 @@
             <div class="field-body">
                 <div class="field is-horizontal">
                     <div class="control">
-                        <button class="button" id="submitButton">Send Message</button>
+                        <button class="button" id="submitButton" @click="submit">Send Message</button>
                     </div>
                     <div class="control">
                         <button class="button is-warning" id="cancelButton">Cancel</button>
@@ -358,7 +363,89 @@
     
 <script>
 export default {
-    name: "LeaveMessageHere"
+    name: "LeaveMessageHere",
+    data (){
+        return {
+            nameFieldWarning: false,
+            emailFieldWarning: false,
+            phoneFieldWarning: false,
+            subjectFieldWarning: false,
+            messageFieldWarning: false
+        }
+    },
+    methods:{
+        submit(){
+            let errorFlag = false;
+
+            //step-1 check if the name is given
+            let nameField = this.$el.querySelector('#nameField');
+            if(nameField.value === '') {
+                nameField.classList.remove('is-success');
+                nameField.classList.add('is-danger');
+                this.nameFieldWarning=true;
+                errorFlag = true;
+            } else {
+                this.nameFieldWarning  = false;
+                nameField.classList.remove('is-danger');
+                nameField.classList.add('is-success');
+            }
+
+            //step-2 check if the email is given properly
+            const emailRegularExpression = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+            let emailField = this.$el.querySelector('#emailField');
+            if(emailRegularExpression.test(emailField.value) === false) {
+                emailField.classList.remove('is-success');
+                emailField.classList.add('is-danger');
+                this.emailFieldWarning=true;
+                errorFlag = true;
+            } else {
+                this.emailFieldWarning = false;
+                emailField.classList.remove('is-danger');
+                emailField.classList.add('is-success');
+            }
+            
+            //step-3 check if the mobile number is given properly
+            const phoneRegularExpression = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+            let phoneField = this.$el.querySelector('#phoneField');
+            if(phoneRegularExpression.test(phoneField.value) === false) {
+                phoneField.classList.remove('is-success');
+                phoneField.classList.add('is-danger');
+                this.phoneFieldWarning=true;
+                errorFlag = true;
+            } else {
+                this.phoneFieldWarning = false;
+                phoneField.classList.add('is-success');
+                phoneField.classList.remove('is-danger');
+            }
+
+            //step-4 check if the subject is given properly.
+            let subjectField = this.$el.querySelector('#subjectField');
+            if(subjectField.value === ''){
+                subjectField.classList.remove('is-success');
+                subjectField.classList.add('is-danger');
+                this.subjectFieldWarning = true;
+                errorFlag = true;
+            } else {
+                this.subjectFieldWarning = false;
+                subjectField.classList.remove('is-danger');
+                subjectField.classList.add('is-success');
+            }
+
+            //step-5 check if the message is given properly
+            let messageField = this.$el.querySelector('#messageField');
+            if(messageField.value === ''){
+                messageField.classList.remove('is-success');
+                messageField.classList.add('is-danger');
+                this.messageFieldWarning = true;
+                errorFlag = true;
+            } else {
+                this.messageFieldWarning = false;
+                messageField.classList.remove('is-danger');
+                messageField.classList.add('is-success');
+            }
+
+        }
+    }
 }
 </script>
 
