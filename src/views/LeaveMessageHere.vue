@@ -2,7 +2,7 @@
     <div class="form-container">
 
         <div class="element-container box">
-
+            <h1 class="is-size-1">Contact Me Form - </h1>
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
                     <label class="label">From</label>
@@ -387,5 +387,10 @@ export default {
             background: white;
             color: black;
         }
+    }
+
+    h1{
+        font-family: "Futura Bk";
+        margin-bottom: 28px;
     }
 </style>
