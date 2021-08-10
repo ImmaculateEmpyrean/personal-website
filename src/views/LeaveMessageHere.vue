@@ -1,12 +1,14 @@
 <template>
     <div class="form-container">
+
+        <div class="element-container box">
         <div class="field is-horizontal">
             <div class="field-label is-normal">
                 <label class="label">From</label>
             </div>
             <div class="field-body">
                 <div class="field">
-                    <p class="control is-expanded has-icons-left">
+                    <p class="control has-icons-left">
                         <input class="input" type="text" placeholder="Name">
                         <span class="icon is-small is-left">
                         <i class="fas fa-user"></i>
@@ -14,7 +16,7 @@
                     </p>
                 </div>
                 <div class="field">
-                    <p class="control is-expanded has-icons-left has-icons-right">
+                    <p class="control has-icons-left has-icons-right">
                         <input class="input is-success" type="email" placeholder="Email" value="alex@smith.com">
                         <span class="icon is-small is-left">
                         <i class="fas fa-envelope"></i>
@@ -27,7 +29,7 @@
             </div>
         </div>
 
-         <div class="field is-horizontal">
+        <div class="field is-horizontal">
             <div class="field-label is-normal">
                 <label class="label">Mobile Number: </label>
             </div>
@@ -263,91 +265,92 @@
             </div>
         </div>
 
-       
-
-<div class="field is-horizontal">
-  <div class="field-label is-normal">
-    <label class="label">Department</label>
-  </div>
-  <div class="field-body">
-    <div class="field is-narrow">
-      <div class="control">
-        <div class="select is-fullwidth">
-          <select>
-            <option>Business development</option>
-            <option>Marketing</option>
-            <option>Sales</option>
-          </select>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Message Category</label>
+            </div>
+            <div class="field-body">
+                <div class="field is-narrow">
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            <select>
+                                <option>Job Offer</option>
+                                <option>Critique</option>
+                                <option>Enquiry</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="field is-horizontal">
-  <div class="field-label">
-    <label class="label">Already a member?</label>
-  </div>
-  <div class="field-body">
-    <div class="field is-narrow">
-      <div class="control">
-        <label class="radio">
-          <input type="radio" name="member">
-          Yes
-        </label>
-        <label class="radio">
-          <input type="radio" name="member">
-          No
-        </label>
-      </div>
-    </div>
-  </div>
-</div>
+        <div class="field is-horizontal">
+            <div class="field-label">
+                <label class="label">Did We Talk Before?</label>
+            </div>
+            <div class="field-body">
+                <div class="field is-narrow">
+                    <div class="control">
+                        <label class="radio">
+                            <input type="radio" name="member">
+                            Yes
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="member">
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<div class="field is-horizontal">
-  <div class="field-label is-normal">
-    <label class="label">Subject</label>
-  </div>
-  <div class="field-body">
-    <div class="field">
-      <div class="control">
-        <input class="input is-danger" type="text" placeholder="e.g. Partnership opportunity">
-      </div>
-      <p class="help is-danger">
-        This field is required
-      </p>
-    </div>
-  </div>
-</div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Subject</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-danger" type="text" placeholder="e.g. Partnership opportunity">
+                    </div>
+                    <p class="help is-danger">
+                        This field is required
+                    </p>
+                </div>
+            </div>
+        </div>
 
-<div class="field is-horizontal">
-  <div class="field-label is-normal">
-    <label class="label">Question</label>
-  </div>
-  <div class="field-body">
-    <div class="field">
-      <div class="control">
-        <textarea class="textarea" placeholder="Explain how we can help you"></textarea>
-      </div>
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label">Message</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <textarea class="textarea" placeholder="Please Enter Your Message Here.."></textarea>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
-<div class="field is-horizontal">
-  <div class="field-label">
-    <!-- Left empty for spacing -->
-  </div>
-  <div class="field-body">
-    <div class="field">
-      <div class="control">
-        <button class="button is-primary">
-          Send message
-        </button>
-      </div>
+    <div class="field is-horizontal">
+        <div class="field-label">
+            <!-- Left empty for spacing -->
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <button class="button is-danger">
+                    Send Message
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+    </div>
+
 </div>
-    </div>
 </template>
     
 <script>
@@ -359,5 +362,15 @@ export default {
 <style lang="scss" scoped>
     .form-container{
         flex: 1 1 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .element-container{
+        width: 75%;
+        border: 1px solid black;
     }
 </style>
