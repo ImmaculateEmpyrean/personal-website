@@ -91,6 +91,10 @@ export default {
         flex: 1 1 100%;
     }
 
+    h1{
+        margin-left: 14px;
+    }
+
     #okay-button{
         display: flex;
         margin-right: 14px;
