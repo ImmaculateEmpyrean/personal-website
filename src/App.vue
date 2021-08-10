@@ -1,8 +1,8 @@
 <template>
-    <div class="page">
+    <div class="page" @click="test">
       <Navbar />
       <div class="router-content">
-        <ScrollIndicator />
+        <ScrollIndicator ref="ScrollIndicator"/>
         <router-view v-slot="{ Component }">
           <transition 
             name="routerTransition"
@@ -37,7 +37,8 @@ export default {
   data(){
     return {
       pageEnterAnimation: "animate__animated animate__backInDown",
-      pageLeaveAnimation: "animate__animated animate__backOutDown"
+      pageLeaveAnimation: "animate__animated animate__backOutDown",
+      testVar: true
     }
   },
   methods:{
@@ -50,6 +51,17 @@ export default {
     renderNextView(){
         this.pageEnterAnimation = "animate__animated animate__backInUp";
         this.pageLeaveAnimation = "animate__animated animate__backOutUp";
+    },
+    test(){
+      if(this.testVar === true){
+          this.$refs.ScrollIndicator.hide();
+          this.testVar=false;
+      }
+      else{
+        this.$refs.ScrollIndicator.show();
+        this.testVar=true;
+      }
+        
     }
   }
 }
@@ -75,6 +87,12 @@ export default {
   body{
       font-family: 'Futura', sans-serif;
       overflow: hidden;
+  }
+
+  //these variables are used to setup the animate.css framework defaults.. removing these MAY CAUSE DANGEROUS UNFORSEEN PROBLEMS AS IT WILL LIKELY BREAK A SERIES OF SETTIMEOUTS SOMEWHERE
+  :root {
+    --animate-duration: 2s;
+    --animate-delay: 0s;
   }
 
   .page{
