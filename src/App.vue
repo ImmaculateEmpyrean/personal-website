@@ -69,6 +69,9 @@ export default {
     menuButtonClicked(){
         this.$refs.MainMenu.$el.classList.add('hidden');
         this.$refs.Navbar.$el.classList.remove('color-inverted');
+
+        this.pageEnterAnimation = "animate__animated animate__zoomIn";
+        this.pageLeaveAnimation = "animate__animated animate__zoomOut";
     }
   }
 }
