@@ -82,6 +82,12 @@ export default {
                         .start();
                 },this)
                 .start();
+    },
+    mounted(){
+        this.$emit('updateScrollIndicator',{
+            showScrollIndicator: false,
+            pageNumber: null
+        });
     }
 }
 </script>

@@ -484,7 +484,13 @@ export default {
                 that.$router.push('/LeaveMessageHere');
             })
         }
-    }
+    },
+    mounted(){
+        this.$emit('updateScrollIndicator',{
+            showScrollIndicator: false,
+            pageNumber: null
+        });
+    },
 }
 </script>
 

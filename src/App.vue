@@ -1,5 +1,5 @@
 <template>
-    <div class="page" @click="test">
+    <div class="page">
       <MainMenu ref="MainMenu" @menuButtonClicked="menuButtonClicked" />
       <Navbar   ref="Navbar"   @hamburgerButtonClicked="hamburgerButtonClicked" />
       <div class="router-content">
@@ -15,6 +15,7 @@
                 :is="Component"
                 @renderPreviousView="renderPreviousView"
                 @renderNextView="renderNextView"
+                @updateScrollIndicator="updateScrollIndicator"
               ></component>
           </transition>
         </router-view>
@@ -53,15 +54,14 @@ export default {
         this.pageEnterAnimation = "animate__animated animate__backInUp";
         this.pageLeaveAnimation = "animate__animated animate__backOutUp";
     },
-    test(){
-      if(this.testVar === true){
-          this.$refs.ScrollIndicator.hide();
-          this.testVar=false;
-      }
-      else{
-        this.$refs.ScrollIndicator.show();
-        this.testVar=true;
-      }   
+    updateScrollIndicator(obj){
+        if(obj.showScrollIndicator === true){
+            this.$refs.ScrollIndicator.show();
+            this.$refs.ScrollIndicator.setCurrentPage(obj.pageNumber);
+        }
+        else{
+            this.$refs.ScrollIndicator.hide();
+        }
     },
     hamburgerButtonClicked(){
         this.$refs.MainMenu.$el.classList.toggle('hidden');

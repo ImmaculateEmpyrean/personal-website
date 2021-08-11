@@ -37,6 +37,12 @@ export default {
                 this.$router.push(this.next);
             }
         }
-    }
+    },
+    mounted(){
+        this.$emit('updateScrollIndicator',{
+            showScrollIndicator: true,
+            pageNumber: 3
+        });
+    },
 }
 </script>

@@ -17,7 +17,13 @@
 
 <script>
 export default {
-    name: "LoadingScreen"
+    name: "LoadingScreen",
+    mounted(){
+        this.$emit('updateScrollIndicator',{
+            showScrollIndicator: false,
+            pageNumber: null
+        });
+    },
 }
 </script>
 

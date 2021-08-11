@@ -30,13 +30,19 @@ export default {
                 this.$router.push(this.previous);
             } 
         }
-    }
+    },
+    mounted(){
+        this.$emit('updateScrollIndicator',{
+            showScrollIndicator: true,
+            pageNumber: 4
+        });
+    },
 }
 </script>
 
 <style lang="scss" scoped>
     .contact-wrapper{
-        flex: 1 1 93%;
+        flex: 1 1 100%;
         display: flex;
     }
 </style>

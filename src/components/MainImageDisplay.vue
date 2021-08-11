@@ -15,7 +15,6 @@ export default {
     },
     computed:{
         style(){
-            console.log(`url('${this.imagePath}')`);
             return `background-image: url('${this.imagePath}')`;    
         }
     }

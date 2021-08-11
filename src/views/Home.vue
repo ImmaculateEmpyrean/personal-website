@@ -23,7 +23,9 @@ export default {
         imagePath: require("@/assets/home.png"),
 
         next: "DevJourney",
-        prev: null
+        prev: null,
+
+        pageNumber: 1
     }
   },
   methods:{
@@ -33,6 +35,12 @@ export default {
                 this.$router.push(this.next);
             }
         }
-  }
+  },
+  mounted(){
+    this.$emit('updateScrollIndicator',{
+        showScrollIndicator: true,
+        pageNumber: 1
+    });
+  },
 }
 </script>
