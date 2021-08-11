@@ -27,7 +27,7 @@ export default {
     .main-menu {
 		transition: transform 2s ease-in-out 0s;
 
-		position: absolute;
+		position: fixed;
 		width: 40vw;
 		height: 100vh;
 		right: 0;
@@ -39,7 +39,7 @@ export default {
 		align-items: center;
 		justify-content: center;
 		background: black;
-		z-index: 1000;
+		z-index: 2;
 
 		ul li {
 			padding: 14px 0;
