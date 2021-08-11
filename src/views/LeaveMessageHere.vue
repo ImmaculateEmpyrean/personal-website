@@ -42,7 +42,7 @@
                 <div class="field-body">
                     <div class="field is-horizontal">
                         <div class="select">
-                            <select name="countryCode" id="">
+                            <select name="countryCode" id="countryCodeField">
                                 <option data-countryCode="GB" value="44" Selected>United Kingdom (+44)</option>
                                 <option data-countryCode="US" value="1">United States (+1)</option>
                                 <optgroup label="Other countries">
@@ -280,11 +280,11 @@
                     <div class="field is-narrow">
                         <div class="control">
                             <div class="select is-fullwidth">
-                                <select>
-                                    <option>Job Offer</option>
-                                    <option>Critique</option>
-                                    <option>Enquiry</option>
-                                    <option>Other</option>
+                                <select id="messageCategoryField">
+                                    <option value="job" selected>Job Offer</option>
+                                    <option value="critique">Critique</option>
+                                    <option value="enquiry" >Enquiry</option>
+                                    <option value="other"   >Other</option>
                                 </select>
                             </div>
                         </div>
@@ -300,11 +300,11 @@
                     <div class="field is-narrow">
                         <div class="control">
                             <label class="radio">
-                                <input type="radio" name="member">
+                                <input type="radio" name="member" id="talkedYesCheck">
                                 Yes
                             </label>
                             <label class="radio">
-                                <input type="radio" name="member" checked>
+                                <input type="radio" name="member" id="talkedNoCheck" checked>
                                 No
                             </label>
                         </div>
@@ -347,7 +347,7 @@
             <div class="field-body">
                 <div class="field is-horizontal">
                     <div class="control">
-                        <button class="button" id="submitButton" @click="submit">Send Message</button>
+                        <button class="button" id="submitButton" @click="submitValidation">Send Message</button>
                     </div>
                     <div class="control">
                         <button class="button is-warning" id="cancelButton">Cancel</button>
@@ -374,7 +374,10 @@ export default {
         }
     },
     methods:{
-        submit(){
+        submitValidation(){
+            console.log('talked yes check : ',this.$el.querySelector('#talkedYesCheck').checked)
+            console.log('talked no check : ',this.$el.querySelector('#talkedNoCheck').checked);
+
             let errorFlag = false;
 
             //step-1 check if the name is given
@@ -444,6 +447,42 @@ export default {
                 messageField.classList.add('is-success');
             }
 
+
+            if(errorFlag === false){
+                //all fields are valid if i am here
+                this.submit();
+            }
+        },
+        submit(){
+            let that = this;
+
+            let newContact = "null";
+            if(this.$el.querySelector('#talkedYesCheck').checked){
+                newContact = false;
+            } else newContact = true;
+
+            let messageDetails = {
+                name : this.$el.querySelector('#nameField').value,
+                email: this.$el.querySelector('#emailField').value,
+                phone: this.$el.querySelector('#phoneField').value,
+                phoneCountryCode: this.$el.querySelector('#countryCodeField').value,
+                phoneCountryName: this.$el.querySelector('#countryCodeField').options[this.$el.querySelector('#countryCodeField').selectedIndex].dataset.countrycode,
+                messageCategory:  this.$el.querySelector('#messageCategoryField').value,
+                newContact: newContact,
+                subject: this.$el.querySelector('#subjectField').value,
+                message: this.$el.querySelector('#messageField').value,
+            }
+            console.log(messageDetails);
+            this.$router.push('/LoadingScreen');
+
+            const axios = require('axios').default;
+            axios.post('/LeaveMessage',messageDetails).then(function(res){
+                console.log('response recieved');
+                that.$router.push('/ThankYou');
+            }).catch(function(error){
+                alert('message could not be posted due to some issue..');
+                that.$router.push('/LeaveMessageHere');
+            })
         }
     }
 }
