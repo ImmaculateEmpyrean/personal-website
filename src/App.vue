@@ -1,5 +1,6 @@
 <template>
     <div class="page" @click="test">
+      <MainMenu />
       <Navbar />
       <div class="router-content">
         <ScrollIndicator ref="ScrollIndicator"/>
@@ -24,6 +25,7 @@
 
 <script>
 import Navbar from '@/components/Navbar.vue';
+import MainMenu from '@/components/MainMenu.vue';
 import ScrollIndicator from '@/components/ScrollIndicator.vue';
 import Content from '@/components/Content.vue';
 
@@ -32,7 +34,8 @@ export default {
   components: {
     Navbar,
     ScrollIndicator,
-    Content
+    Content,
+    MainMenu
   },
   data(){
     return {

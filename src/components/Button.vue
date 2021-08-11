@@ -36,6 +36,21 @@ export default {
             background-color: white;
             border: 5px solid black;
         }
+
+        &.color-inverted{
+            background-color:white;
+            color: black;
+
+            &:hover{
+                color: white;
+                background-color: black;
+                border: 5px solid white;
+            }
+        }
+
+        &.full-width{
+            width: 100%;
+        }
     }
 </style>
 
