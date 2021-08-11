@@ -1,10 +1,13 @@
 <template>
     <div class="scroll-box">
-        <svg width="70" height="140" viewBox="0 0 70 140" fill="none" xmlns="http://www.w3.org/2000/svg" v-show="showScrollBar" >
+        <svg width="70" height="140" viewBox="0 0 70 140" fill="none" xmlns="http://www.w3.org/2000/svg" 
+             class="animate__animated" v-show="showScrollBar">
+
             <rect width="70" height="5" rx="2.5" fill="black"/>
             <rect y="45" width="35" height="5" rx="2.5" fill="black"/>
             <rect y="90" width="35" height="5" rx="2.5" fill="black"/>
             <rect y="135" width="35" height="5" rx="2.5" fill="black"/>
+
         </svg>
     </div>
 </template>
@@ -51,11 +54,7 @@ export default {
 
                 let svg = this.$el.querySelector('svg')
                 svg.classList.remove('animate__fadeInLeft');
-
-                svg.classList.add('animate__animated');
                 svg.classList.add('animate__fadeOutLeft');
-
-                console.log(this.showScrollBar);
 
                 setTimeout(function(){
                     that.showScrollBar = false;
@@ -75,8 +74,6 @@ export default {
 
                     let svg = that.$el.querySelector("svg")
                     svg.classList.remove('animate__fadeOutLeft');
-
-                    svg.classList.add('animate__animated');
                     svg.classList.add('animate__fadeInLeft');
 
                 },2000)
