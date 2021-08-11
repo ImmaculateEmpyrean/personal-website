@@ -1,10 +1,10 @@
 <template>
     <div class="main-menu hidden">
 			<ul>
-				<li><Button buttonText="Portfolio" showButton="true" class="color-inverted full-width" /></li>
-				<li><Button buttonText="About Me"  showButton="true" class="color-inverted full-width" /></li>
-				<li><Button buttonText="Contact Information"  showButton="true" class="color-inverted full-width" /></li>
-				<li><Button buttonText="Leave Message Here"  showButton="true" class="color-inverted full-width" /></li>
+				<li><Button @buttonClicked="navToPortfolio" buttonText="Portfolio" showButton="true" class="color-inverted full-width" /></li>
+				<li><Button @buttonClicked="navToMe" buttonText="About Me"  showButton="true" class="color-inverted full-width" /></li>
+				<li><Button @buttonClicked="navToContact" buttonText="Contact Information"  showButton="true" class="color-inverted full-width" /></li>
+				<li><Button @buttonClicked="navToLeaveMessageHere" buttonText="Leave Message Here"  showButton="true" class="color-inverted full-width" /></li>
 			</ul>
 		</div>
 </template>
@@ -16,7 +16,25 @@ export default {
     name: "MainMenu",
     components:{
         Button
-    }
+    },
+	methods:{
+		nav(route){
+			this.$emit('menuButtonClicked');
+			this.$router.push(route);
+		},
+		navToPortfolio(){
+			this.nav('/DevJourney');
+		},
+		navToMe(){
+			this.nav('/Me');
+		},
+		navToContact(){
+			this.nav('/ContactMe');
+		},
+		navToLeaveMessageHere(){
+			this.nav('LeaveMessageHere');
+		}
+	}
 }
 </script>
 

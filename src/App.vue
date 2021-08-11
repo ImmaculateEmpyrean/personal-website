@@ -1,7 +1,7 @@
 <template>
     <div class="page" @click="test">
-      <MainMenu ref="MainMenu"/>
-      <Navbar @hamburgerButtonClicked="hamburgerButtonClicked" />
+      <MainMenu ref="MainMenu" @menuButtonClicked="menuButtonClicked" />
+      <Navbar   ref="Navbar"   @hamburgerButtonClicked="hamburgerButtonClicked" />
       <div class="router-content">
         <ScrollIndicator ref="ScrollIndicator"/>
         <router-view v-slot="{ Component }">
@@ -48,8 +48,6 @@ export default {
     renderPreviousView(){
         this.pageEnterAnimation = "animate__animated animate__backInDown";
         this.pageLeaveAnimation = "animate__animated animate__backOutDown";
-
-        console.log('render previous view called');
     },
     renderNextView(){
         this.pageEnterAnimation = "animate__animated animate__backInUp";
@@ -67,6 +65,10 @@ export default {
     },
     hamburgerButtonClicked(){
         this.$refs.MainMenu.$el.classList.toggle('hidden');
+    },
+    menuButtonClicked(){
+        this.$refs.MainMenu.$el.classList.add('hidden');
+        this.$refs.Navbar.$el.classList.remove('color-inverted');
     }
   }
 }

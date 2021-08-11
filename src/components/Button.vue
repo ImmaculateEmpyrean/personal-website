@@ -1,5 +1,5 @@
 <template>
-    <button v-show="showButton">{{buttonText}}</button>    
+    <button @click="$emit('buttonClicked')" v-show="showButton">{{buttonText}}</button>    
 </template>
 
 <script>
