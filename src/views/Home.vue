@@ -18,7 +18,7 @@ export default {
         heading2:"Empyrean",
         caption: "portfolio",
         showCaption: true,
-        description: "Video game programmer & full stack web and database designer as well as developer",
+        description: "I program video games and fullstack websites for a living while pursuing my video game engine as a passionate hobby.",
         showButton: false,
         imagePath: require("@/assets/home.png"),
 
