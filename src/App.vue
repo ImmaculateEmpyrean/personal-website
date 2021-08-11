@@ -111,5 +111,7 @@ export default {
   .router-content{
     flex: 1 1 95%;
     display: flex;
+
+    z-index: 1;
   }
 </style>
