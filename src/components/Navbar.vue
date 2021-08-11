@@ -14,7 +14,7 @@
                     <li> <a href="#" class="text">LinkedIn</a></li>
                 </ul>
             </div>
-            <div class="hamburger-menu">
+            <div class="hamburger-menu" @click="hamburgerIconClicked">
                 <svg width="75" height="50" viewBox="0 0 75 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="75" height="5" rx="2.5" class="hamburger-bar-one"/>
                     <rect y="22.5" width="75" height="5" rx="2.5" class="hamburger-bar-two"/>
@@ -27,7 +27,13 @@
 
 <script>
 export default {
-    name: "Navbar"
+    name: "Navbar",
+    methods:{
+        hamburgerIconClicked(){
+            this.$el.classList.toggle('color-inverted');
+            this.$emit('hamburgerButtonClicked');
+        }
+    }
 }
 </script>
 
@@ -70,18 +76,22 @@ export default {
                     color: black;
                 }
             }
-        
-            .hamburger-bar-one{
-                transition: fill 2s;
-                fill: black;
-            }
-            .hamburger-bar-two{
-                transition: fill 2s;
-                fill: black;
-            }
-            .hamburger-bar-three{
-                transition: fill 2s;
-                fill: black;
+
+            svg{
+                cursor: pointer;
+
+                .hamburger-bar-one{
+                    transition: fill 2s;
+                    fill: black;
+                }
+                .hamburger-bar-two{
+                    transition: fill 2s;
+                    fill: black;
+                }
+                .hamburger-bar-three{
+                    transition: fill 2s;
+                    fill: black;
+                }
             }
         }
 
@@ -109,14 +119,16 @@ export default {
             }
         }
 
-        .hamburger-bar-one{
-            fill: white;
-        }
-        .hamburger-bar-two{
-            fill: white;
-        }
-        .hamburger-bar-three{
-            fill: white;
+        svg{
+            .hamburger-bar-one{
+                fill: white;
+            }
+            .hamburger-bar-two{
+                fill: white;
+            }
+            .hamburger-bar-three{
+                fill: white;
+            }
         }
     }
 

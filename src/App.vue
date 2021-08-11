@@ -1,7 +1,7 @@
 <template>
     <div class="page" @click="test">
-      <MainMenu />
-      <Navbar />
+      <MainMenu ref="MainMenu"/>
+      <Navbar @hamburgerButtonClicked="hamburgerButtonClicked" />
       <div class="router-content">
         <ScrollIndicator ref="ScrollIndicator"/>
         <router-view v-slot="{ Component }">
@@ -63,8 +63,10 @@ export default {
       else{
         this.$refs.ScrollIndicator.show();
         this.testVar=true;
-      }
-        
+      }   
+    },
+    hamburgerButtonClicked(){
+        this.$refs.MainMenu.$el.classList.toggle('hidden');
     }
   }
 }
