@@ -61,7 +61,7 @@ export default {
 <style lang="scss" scoped>
     .container{
         flex: 1 1 100%;
-        border: 1px solid red;
+        //border: 1px solid red;
 
         display: flex;
     }

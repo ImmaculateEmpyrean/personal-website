@@ -56,7 +56,7 @@ export default {
 <style lang="scss" scoped>
     .text-box {
         flex: 1 1 45%;
-        border : 1px solid blue;
+        //border : 1px solid blue;
 
         display: flex;
         flex-direction: column;

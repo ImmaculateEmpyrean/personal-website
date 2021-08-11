@@ -91,7 +91,7 @@ export default {
     .scroll-box {
         transition: flex-basis 2s;
         flex: 1 1 5%;
-        border : 1px solid blue;
+        //border : 1px solid blue;
 
         display: flex;
         flex-direction: column;

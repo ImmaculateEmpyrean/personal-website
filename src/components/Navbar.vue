@@ -44,7 +44,7 @@ export default {
         transition: color 2s, background-color 2s;
 
         flex: 1 1 5%;
-        border: 1px solid black;
+        //border: 1px solid black;
         display: flex;
         justify-content: space-between;
         padding: 0px 14px;
