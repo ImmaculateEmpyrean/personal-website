@@ -81,15 +81,15 @@ export default {
                 cursor: pointer;
 
                 .hamburger-bar-one{
-                    transition: fill 2s;
+                    transition: fill 2s, transform 2s;
                     fill: black;
                 }
                 .hamburger-bar-two{
-                    transition: fill 2s;
+                    transition: fill 2s, transform 2s;
                     fill: black;
                 }
                 .hamburger-bar-three{
-                    transition: fill 2s;
+                    transition: fill 2s, transform 2s, transform-origin 2s;
                     fill: black;
                 }
             }
@@ -121,15 +121,21 @@ export default {
 
         svg{
             .hamburger-bar-one{
+				transform: rotateZ(45deg);
+
                 fill: white;
             }
             .hamburger-bar-two{
+                transform: translateX(20vw);
+
                 fill: white;
             }
             .hamburger-bar-three{
+                transform-origin: left bottom;
+                transform: rotateZ(-45deg);
+
                 fill: white;
             }
         }
     }
-
 </style>
