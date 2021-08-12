@@ -80,6 +80,7 @@ export default {
 
 <style lang="scss">
   @import '../src/assets/sass/_font.scss';
+  @import '../src/assets/sass/_settings.scss';
 
   *,*::before,*::after{
       margin: 0;

@@ -1,0 +1,30 @@
+//media queries
+
+//from bulma docs - 
+    // mobile: up to 768px
+    // tablet: from 769px
+    // desktop: from 1024px
+    // widescreen: from 1216px
+    // fullhd: from 1408px
+
+$max-mobile: 768px;
+$max-tablet: 1024px;
+
+@mixin atleast-tablet {
+    @media only screen and (min-width: $max-mobile) {
+        @content;
+    }
+}
+
+@mixin atleast-desktop {
+    @media only screen and (min-width: $max-tablet){
+        @content;
+    }
+}
+
+//spacing
+$spacing-normal: 14px;
+
+//font-size
+$font-normal: 20px;
+$font-small: 10px;

@@ -3,6 +3,7 @@
         <MainTextDisplay 
         :heading1="heading1" :heading2="heading2" :caption="caption" :description="description"
         :showCaption="showCaption" :showButton="showButton"/>
+
         <MainImageDisplay :imagePath="imagePath"/>
     </div>
 </template>
@@ -59,10 +60,15 @@ export default {
 
 
 <style lang="scss" scoped>
+    @import '../assets/sass/_settings.scss';
+
     .container{
         flex: 1 1 100%;
-        //border: 1px solid red;
-
         display: flex;
+        flex-direction: column;
+
+        @include atleast-desktop{
+            flex-direction: row;
+        }
     }
 </style>
