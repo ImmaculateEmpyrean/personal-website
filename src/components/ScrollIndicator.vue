@@ -38,7 +38,7 @@ export default {
     },
     computed:{
         showVertical: function(){
-            if(window.innerWidth < '768')
+            if(window.innerWidth < 1024)
                 return false;
             else return true; 
         }

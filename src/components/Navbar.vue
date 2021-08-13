@@ -72,13 +72,13 @@ export default {
 
     .center{
         display: flex;
-        transition: color 2s;
-
-        display: flex;
         align-items: center;
+        transition: color 2s;
 
         column-gap: $spacing-small;
         font-size: 30px;
+        
+        color: black;
 
         @include atleast-tablet{
             margin-left: auto;  
@@ -90,5 +90,52 @@ export default {
         display: flex;
         margin-top: auto;
         margin-bottom: auto;
+
+        cursor: pointer;
+
+        .hamburger-bar-one{
+            transition: fill 2s, transform 2s;
+            fill: black;
+        }
+        .hamburger-bar-two{
+            transition: fill 2s, transform 2s;
+            fill: black;
+        }
+        .hamburger-bar-three{
+            transition: fill 2s, transform 2s, transform-origin 2s;
+            fill: black;
+        }
+    }
+</style>
+
+<style lang="scss" scoped>
+    .nav-bar.color-inverted{
+        color: white;
+        background: black;
+
+       .left{
+
+       }
+
+       .center{
+           color: white;
+       }
+
+       .right{
+            .hamburger-bar-one{
+				transform: rotateZ(45deg);
+                fill: white;
+            }
+            .hamburger-bar-two{
+                transform: translateX(20vw);
+                fill: white;
+            }
+            .hamburger-bar-three{
+                transform-origin: left bottom;
+                transform: rotateZ(-45deg);
+
+                fill: white;
+            }
+       }
     }
 </style>
