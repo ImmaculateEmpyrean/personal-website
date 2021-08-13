@@ -18,7 +18,7 @@
 
 .subtitle{
     display: none;
-    
+
     font-family: Futura Bk;
     font-style: normal;
     font-weight: normal;
@@ -58,15 +58,20 @@
     font-family: Futura Bk;
     font-style: normal;
     font-weight: normal;
-    font-size: 24px;
+    font-size: 18px;
     line-height: 135.8%;
 
     margin-top: $spacing-small;
-    text-align: center;
+    margin-left: $spacing-normal;
+
+    text-align: left;
     letter-spacing: 0.2em;
 
+    @include atleast-tablet{
+        font-size: 24px;
+    }
     @include atleast-desktop{
         margin-top: $spacing-normal;
-        text-align: left;
+        margin-left: 0;
     }
 }

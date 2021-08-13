@@ -64,15 +64,24 @@ export default {
         justify-content: center;
     }
 
-    h1{
-        @extend .heading;
+    img{
+        margin: 0 auto;
+        @include atleast-desktop{
+            margin: 0
+        }
     }
 
-    h2{
-        @extend .caption;
-    }
+    h1{ @extend .heading; }
+    h2{ @extend .caption; }
+    p{  @extend .text-normal; }
 
-    p{
-       @extend .text-normal;
+    button{
+        margin-top: $spacing-small;
+        margin-bottom: $spacing-small;
+
+        @include atleast-desktop{
+            margin-top:    $spacing-normal;
+            margin-bottom: $spacing-normal;
+        }
     }
 </style>
