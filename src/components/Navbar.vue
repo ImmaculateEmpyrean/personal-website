@@ -82,13 +82,17 @@ export default {
 
             .icons > ul{
                 transition: color 2s;
-                align-items: flex-end;
 
                 display: flex;
-                column-gap: 7px;
+                column-gap: $spacing-small;
                 font-size: 30px;
 
                 color: black;
+
+                li{
+                    display: flex;
+                    align-items: center;
+                }
 
                 .text{
                     transition: color 2s;
