@@ -1,0 +1,11 @@
+.main-logo{
+    width: 75px;
+
+    @include atleast-tablet{
+        width: 100px;
+    }
+
+    @include atleast-desktop{
+        width: 150px;
+    }
+}

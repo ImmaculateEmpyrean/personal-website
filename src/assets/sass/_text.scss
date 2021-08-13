@@ -17,7 +17,20 @@
 }
 
 .subtitle{
+    display: none;
+    
+    font-family: Futura Bk;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.5vw;
+    line-height: 135.8%;
 
+    letter-spacing: 0.2em;
+    text-transform: capitalize;
+
+    @include atleast-tablet{
+        display: block;
+    }
 }
 
 .caption{

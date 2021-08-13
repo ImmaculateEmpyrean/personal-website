@@ -40,27 +40,37 @@ export default {
 
 
 <style lang="scss" scoped>
+    @import '../assets/sass/_text.scss';
+    @import '../assets/sass/_settings.scss';
+
+    @import '../assets/sass/_navbar.scss';
+
     .nav-bar{
         transition: color 2s, background-color 2s;
 
         flex: 1 1 5%;
-        //border: 1px solid black;
+
         display: flex;
         justify-content: space-between;
-        padding: 0px 14px;
+        padding: 0px $spacing-normal;
+        margin: $spacing-normal;
         position: relative;
         z-index: 3;
 
         .left{
             display: flex;
             align-items: center;
-            column-gap: 14px;
+            column-gap: $spacing-normal;
+
+            img{
+                @extend .main-logo;
+            }
         }
 
         .right{
             display: flex;
             align-items: center;
-            column-gap: 14px;
+            column-gap: $spacing-normal;
 
             .icons > ul{
                 transition: color 2s;
@@ -96,14 +106,7 @@ export default {
         }
 
         .text{
-            font-family: Futura Bk;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 1.5vw;
-            line-height: 135.8%;
-            /* or 33px */
-            letter-spacing: 0.2em;
-            text-transform: capitalize;
+           @extend .subtitle;
         }
     }
 

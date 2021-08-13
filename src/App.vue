@@ -115,7 +115,12 @@ export default {
   .router-content{
     flex: 1 1 95%;
     display: flex;
+    flex-direction: column;
 
     z-index: 1;
+
+    @include atleast-desktop{
+      flex-direction: row;
+    }
   }
 </style>
