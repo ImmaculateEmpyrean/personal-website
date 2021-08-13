@@ -121,6 +121,7 @@ export default {
 
     @include atleast-desktop{
       flex-direction: row;
+      column-gap: $spacing-normal;
     }
   }
 </style>

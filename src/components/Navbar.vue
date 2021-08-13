@@ -11,14 +11,15 @@
                     <li><span class="iconify" data-inline="false" data-icon="akar-icons:github-fill"></span></li>
                     <li><span class="iconify" data-inline="false" data-icon="ph:discord-logo-light"></span></li>
                     <li><span class="iconify" data-inline="false" data-icon="bx:bxl-firefox"></span></li>
+                    <li v-show="showLinkedInIcon"><span class="iconify" data-inline="false" data-icon="akar-icons:linkedin-fill"></span></li>
                     <li> <a href="#" class="text">LinkedIn</a></li>
                 </ul>
             </div>
             <div class="hamburger-menu" @click="hamburgerIconClicked">
-                <svg width="75" height="50" viewBox="0 0 75 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="75" height="5" rx="2.5" class="hamburger-bar-one"/>
-                    <rect y="22.5" width="75" height="5" rx="2.5" class="hamburger-bar-two"/>
-                    <rect y="45" width="75" height="5" rx="2.5" class="hamburger-bar-three"/>
+                <svg viewBox="0 0 75 50" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect           width="75" height="5" rx="2.5" class="hamburger-bar-one"/>
+                    <rect y="22.5"  width="75" height="5" rx="2.5" class="hamburger-bar-two"/>
+                    <rect y="45"    width="75" height="5" rx="2.5" class="hamburger-bar-three"/>
                 </svg>
             </div>
         </div>
@@ -32,6 +33,14 @@ export default {
         hamburgerIconClicked(){
             this.$el.classList.toggle('color-inverted');
             this.$emit('hamburgerButtonClicked');
+        }
+    },
+    computed:{
+        showLinkedInIcon: function(){
+            if(window.innerWidth < 768){
+                return true;
+            }
+            else return false;
         }
     }
 }
@@ -47,12 +56,11 @@ export default {
 
     .nav-bar{
         transition: color 2s, background-color 2s;
-
         flex: 1 1 5%;
 
         display: flex;
         justify-content: space-between;
-        padding: 0px $spacing-normal;
+        //padding: 0px $spacing-normal;
         margin: $spacing-normal;
         position: relative;
         z-index: 3;
@@ -74,6 +82,7 @@ export default {
 
             .icons > ul{
                 transition: color 2s;
+                align-items: flex-end;
 
                 display: flex;
                 column-gap: 7px;
