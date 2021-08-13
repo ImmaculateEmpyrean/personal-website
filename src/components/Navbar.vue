@@ -1,28 +1,26 @@
 <template>
     <div class="nav-bar">
+        
         <div class="left">
             <img src="@/assets/logo.svg" alt="logo-icon">
-            <h1 class="text">Veeru Empyrean</h1>
+            <h1 class="subtitle">Veeru Empyrean</h1>
         </div>
         
-        <div class="right">
-            <div class="icons">
-                <ul>
-                    <li><span class="iconify" data-inline="false" data-icon="akar-icons:github-fill"></span></li>
-                    <li><span class="iconify" data-inline="false" data-icon="ph:discord-logo-light"></span></li>
-                    <li><span class="iconify" data-inline="false" data-icon="bx:bxl-firefox"></span></li>
-                    <li v-show="showLinkedInIcon"><span class="iconify" data-inline="false" data-icon="akar-icons:linkedin-fill"></span></li>
-                    <li> <a href="#" class="text">LinkedIn</a></li>
-                </ul>
-            </div>
-            <div class="hamburger-menu" @click="hamburgerIconClicked">
-                <svg viewBox="0 0 75 50" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect           width="75" height="5" rx="2.5" class="hamburger-bar-one"/>
-                    <rect y="22.5"  width="75" height="5" rx="2.5" class="hamburger-bar-two"/>
-                    <rect y="45"    width="75" height="5" rx="2.5" class="hamburger-bar-three"/>
-                </svg>
-            </div>
-        </div>
+        <ul class="center icons">
+            <li><span class="iconify" data-inline="false" data-icon="akar-icons:github-fill"></span></li>
+            <li><span class="iconify" data-inline="false" data-icon="ph:discord-logo-light"></span></li>
+            <li><span class="iconify" data-inline="false" data-icon="bx:bxl-firefox"></span></li>
+            <li v-show="showLinkedInIcon"><span class="iconify" data-inline="false" data-icon="akar-icons:linkedin-fill"></span></li>
+            <li> <a href="#" class="subtitle">LinkedIn</a></li>
+        </ul>
+        
+       <svg class="right hamburger-menu" @click="hamburgerIconClicked"
+            width="50" height="34" viewBox="0 0 50 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect y="30.006" width="50" height="3.334" rx="1.667" fill="black"/>
+                <rect width="50" height="3.334" rx="1.667" fill="black"/>
+                <rect y="15.0031" width="50" height="3.334" rx="1.667" fill="black"/>
+        </svg>
+
     </div>
 </template>
 
@@ -46,8 +44,6 @@ export default {
 }
 </script>
 
-
-
 <style lang="scss" scoped>
     @import '../assets/sass/_text.scss';
     @import '../assets/sass/_settings.scss';
@@ -60,98 +56,39 @@ export default {
 
         display: flex;
         justify-content: space-between;
-        //padding: 0px $spacing-normal;
-        margin: $spacing-normal;
+        margin: $spacing-small;
+
         position: relative;
         z-index: 3;
+    }
 
-        .left{
-            display: flex;
-            align-items: center;
-            column-gap: $spacing-normal;
+    .left{
+        display: flex;
+        align-items: center;
+        column-gap: $spacing-normal;
 
-            img{
-                @extend .main-logo;
-            }
-        }
+        img{ @extend .main-logo; }
+    }
 
-        .right{
-            display: flex;
-            align-items: center;
-            column-gap: $spacing-normal;
+    .center{
+        display: flex;
+        transition: color 2s;
 
-            .icons > ul{
-                transition: color 2s;
+        display: flex;
+        align-items: center;
 
-                display: flex;
-                column-gap: $spacing-small;
-                font-size: 30px;
+        column-gap: $spacing-small;
+        font-size: 30px;
 
-                color: black;
-
-                li{
-                    display: flex;
-                    align-items: center;
-                }
-
-                .text{
-                    transition: color 2s;
-                    color: black;
-                }
-            }
-
-            svg{
-                cursor: pointer;
-
-                .hamburger-bar-one{
-                    transition: fill 2s, transform 2s;
-                    fill: black;
-                }
-                .hamburger-bar-two{
-                    transition: fill 2s, transform 2s;
-                    fill: black;
-                }
-                .hamburger-bar-three{
-                    transition: fill 2s, transform 2s, transform-origin 2s;
-                    fill: black;
-                }
-            }
-        }
-
-        .text{
-           @extend .subtitle;
+        @include atleast-tablet{
+            margin-left: auto;  
+            margin-right: $spacing-normal; 
         }
     }
 
-    .nav-bar.color-inverted{
-        color: white;
-        background: black;
-
-       .right .icons > ul{
-            color: white;
-
-            .text{
-                color: white;
-            }
-        }
-
-        svg{
-            .hamburger-bar-one{
-				transform: rotateZ(45deg);
-
-                fill: white;
-            }
-            .hamburger-bar-two{
-                transform: translateX(20vw);
-
-                fill: white;
-            }
-            .hamburger-bar-three{
-                transform-origin: left bottom;
-                transform: rotateZ(-45deg);
-
-                fill: white;
-            }
-        }
+    .right{
+        display: flex;
+        margin-top: auto;
+        margin-bottom: auto;
     }
 </style>
