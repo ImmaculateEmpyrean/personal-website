@@ -1,0 +1,59 @@
+@import './settings';
+
+.heading{
+    font-family: Futura;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 135.8%;
+    text-align: center;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+
+    @include atleast-desktop{
+        font-size: 5vw;
+        margin-right: auto;
+    }
+}
+
+.subtitle{
+
+}
+
+.caption{
+    font-family: 'Futura';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 135.8%;
+
+    text-align: center;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+
+    color: #E12A2A;
+
+    @include atleast-desktop{
+        font-size: 2.3vw;
+        line-height: 70%;
+        
+        text-align: right;
+    }
+}
+
+.text-normal{
+    font-family: Futura Bk;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 135.8%;
+
+    margin-top: $spacing-small;
+    text-align: center;
+    letter-spacing: 0.2em;
+
+    @include atleast-desktop{
+        margin-top: $spacing-normal;
+        text-align: left;
+    }
+}

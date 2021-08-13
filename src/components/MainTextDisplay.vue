@@ -54,9 +54,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    @import '../assets/sass/_text.scss';
+
     .text-box {
         flex: 1 1 45%;
-        //border : 1px solid blue;
 
         display: flex;
         flex-direction: column;
@@ -64,40 +65,14 @@ export default {
     }
 
     h1{
-        font-size: 5vw;
-        margin-right: auto;
-
-        font-family: Futura;
-        font-style: normal;
-        font-weight: 500;
-        letter-spacing: 0.3em;
-        text-transform: uppercase;
-
-        color: #000000;
+        @extend .heading;
     }
 
     h2{
-        font-family: Futura;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 40px;
-        line-height: 70%;
-        
-        text-align: right;
-        letter-spacing: 0.3em;
-        text-transform: uppercase;
-
-        color: #E12A2A;
+        @extend .caption;
     }
 
     p{
-        margin-top: 14px;
-        font-family: Futura Bk;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 24px;
-
-        letter-spacing: 0.2em;
-        color: #000000;
+       @extend .text-normal;
     }
 </style>
