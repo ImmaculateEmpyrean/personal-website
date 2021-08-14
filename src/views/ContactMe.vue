@@ -1,5 +1,5 @@
 <template>
-    <div class="contact-wrapper" @wheel="wheelEvent">
+    <div class="contact-wrapper" @wheel="wheelEvent" v-touch:swipe.bottom="swipeDown">
         <ContactPanel />
         <MainImageDisplay :imagePath="imagePath" v-show="atleastDesktop"/>
     </div>
@@ -29,6 +29,10 @@ export default {
                 await this.$emit("renderPreviousView");
                 this.$router.push(this.previous);
             } 
+        },
+        async swipeDown(){
+            await this.$emit("renderPreviousView");
+            this.$router.push(this.previous);
         }
     },
     computed: {

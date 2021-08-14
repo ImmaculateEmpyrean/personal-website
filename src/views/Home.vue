@@ -1,8 +1,10 @@
 <template>
     <Content :heading1="heading1" :heading2="heading2" :caption="caption" :description="description"
              :showCaption="showCaption" :showButton="showButton" :imagePath="imagePath" 
-             @wheel="wheelEvent"/>
+             @wheel="wheelEvent" v-touch:swipe.top="swipeUp" />
 </template>
+
+
 
 <script>
 import Content from '@/components/Content.vue';
@@ -34,8 +36,13 @@ export default {
                 await this.$emit("renderNextView");
                 this.$router.push(this.next);
             }
+        },
+    async swipeUp(e){
+          await this.$emit("renderNextView");
+          this.$router.push(this.next);
         }
   },
+
   mounted(){
     this.$emit('updateScrollIndicator',{
         showScrollIndicator: true,

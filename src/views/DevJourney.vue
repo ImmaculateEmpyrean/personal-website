@@ -1,7 +1,7 @@
 <template>
     <Content :heading1="heading1" :heading2="heading2" :caption="caption" :description="description"
              :showCaption="showCaption" :showButton="showButton" :imagePath="imagePath" 
-             @wheel="wheelEvent"/> 
+             @wheel="wheelEvent" v-touch:swipe.top="swipeUp" v-touch:swipe.bottom="swipeDown"/> 
 </template>
 
 <script>
@@ -39,6 +39,15 @@ export default {
                 await this.$emit("renderNextView");
                 this.$router.push(this.next);
             }
+        },
+
+        async swipeUp(){
+            await this.$emit("renderNextView");
+            this.$router.push(this.next);
+        },
+        async swipeDown(){
+            await this.$emit("renderPreviousView");
+            this.$router.push(this.previous);
         }
     },
     mounted(){
