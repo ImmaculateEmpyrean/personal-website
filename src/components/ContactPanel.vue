@@ -39,6 +39,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    @import '../assets/sass/_settings.scss';
+
     .contact-panel{
         flex: 1 1 45%;
 
@@ -53,9 +55,9 @@ export default {
         cursor: pointer;
 
         border: 2px solid black;
-
+        font-size: 16px;
         font-family: "futura";
-        font-size: 1.5vw;
+        
 
         .discord-id{
             display: inline-flex;
@@ -64,13 +66,17 @@ export default {
 
             border: 1px solid black;
             padding: 7px;
-            //border-radius: 50%;
 
             img{
                 width: 75px;
                 border-radius: 50%;
             }
         }
-        
+
+        @include atleast-desktop{
+            font-size: 1.5vw;
+        }
     }
+
+    
 </style>

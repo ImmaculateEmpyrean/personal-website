@@ -1,7 +1,7 @@
 <template>
     <div class="contact-wrapper" @wheel="wheelEvent">
         <ContactPanel />
-        <MainImageDisplay :imagePath="imagePath" />
+        <MainImageDisplay :imagePath="imagePath" v-show="isDesktop"/>
     </div>
 </template>
 
@@ -29,6 +29,13 @@ export default {
                 await this.$emit("renderPreviousView");
                 this.$router.push(this.previous);
             } 
+        }
+    },
+    computed: {
+        isDesktop: function(){
+            if(window.innerWidth > 1024){
+                return true;
+            } else return false;
         }
     },
     mounted(){
