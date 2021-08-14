@@ -2,6 +2,7 @@
     <div class="contact-panel">
         <MainTextDisplay :heading1="heading1" :heading2="heading2" :description="description"
                          :showButton="showButton" :showCaption="showCaption"/>
+        <div class="picture-placeholder" v-show="onlyTablet"></div>
         <ul>
             <li>I recieve mail : <strong>ImmaculateEmpyrean@gmail.com</strong></li>
             <li>I am on Discord:
@@ -12,18 +13,20 @@
             </li>
             <li><a href="">Have a Github preference?</a></li>
             <li>My LinkedIn page</li>
-            <li>Leave a message here on this site</li>
+            <li><strong>Leave a message here on this site</strong></li>
         </ul>
     </div>
 </template>
 
 <script>
 import MainTextDisplay from './MainTextDisplay.vue';
+import MainImageDisplay from './MainImageDisplay.vue';
 
 export default {
     name: "ContactPanel",
     components: {
-        MainTextDisplay
+        MainTextDisplay,
+        MainImageDisplay
     },
     data (){
         return {
@@ -32,6 +35,14 @@ export default {
             showCaption: false,
             showButton: false,
             description: "I want us to break the ice and communicate with each other."
+        }
+    },
+    computed: {
+        onlyTablet: function(){
+            if((window.innerWidth <= 1024) && (window.innerWidth >= 768)){
+                return true;
+            }
+            else return false
         }
     }
 }
@@ -46,6 +57,16 @@ export default {
 
         display: flex;
         flex-direction: column;
+    }
+
+    .picture-placeholder{
+        flex: 1 1 55%;
+        
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url('../assets/contact-me.png');
+
+        background-position: center center;
     }
 
     li{

@@ -1,7 +1,7 @@
 <template>
     <div class="contact-wrapper" @wheel="wheelEvent">
         <ContactPanel />
-        <MainImageDisplay :imagePath="imagePath" v-show="isDesktop"/>
+        <MainImageDisplay :imagePath="imagePath" v-show="atleastDesktop"/>
     </div>
 </template>
 
@@ -32,8 +32,8 @@ export default {
         }
     },
     computed: {
-        isDesktop: function(){
-            if(window.innerWidth > 1024){
+        atleastDesktop: function(){
+            if(window.innerWidth >= 1024){
                 return true;
             } else return false;
         }

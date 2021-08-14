@@ -61,7 +61,9 @@ export default {
 
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
+
+        @include atleast-desktop{ justify-content: center; }
     }
 
     img{
