@@ -39,6 +39,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+	@import '../assets/sass/_settings.scss';
+
     h1{
         color: white;
     }
@@ -46,7 +48,7 @@ export default {
 		transition: transform 2s ease-in-out 0s;
 
 		position: fixed;
-		width: 40vw;
+		width: 60vw;
 		height: 100vh;
 		right: 0;
 		bottom: 0;
@@ -59,16 +61,28 @@ export default {
 		background: black;
 		z-index: 2;
 
-		ul li {
-			padding: 14px 0;
-
-			a {
-				font-size: 1.2vw;
-			}
+		@include atleast-tablet{
+			width: 40vw;
 		}
 
+		ul li {
+			padding: $spacing-small 0;
+			button {font-size: 16px;}
+
+			@include atleast-tablet{
+				padding: $spacing-normal 0;
+				button {font-size: 20px;}
+			}
+			@include atleast-desktop{
+				button {font-size: 1.2vw;}
+			}
+		}
 		&.hidden {
-			transform: translateX(40vw);
+			transform: translateX(60vw);
+
+			@include atleast-tablet{
+				transform: translateX(40vw);
+			}
 		}
 	}
 </style>
