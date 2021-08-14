@@ -76,9 +76,17 @@ export default {
             if(this.showScrollBar === true){
                 let that = this;
 
-                let svg = this.$el.querySelector('svg')
+                let svg = this.$el.querySelectorAll('svg');
+                if(that.showVertical === false)
+                    svg = svg[1];
+                else svg = svg[0];
+
                 svg.classList.remove('animate__fadeInLeft');
-                svg.classList.add('animate__fadeOutLeft');
+                svg.classList.remove('animate__fadeInUp');
+
+                if(window.innerWidth > 1024)
+                     svg.classList.add('animate__fadeOutLeft');
+                else svg.classList.add('animate__fadeOutDown');
 
                 setTimeout(function(){
                     that.showScrollBar = false;
@@ -109,10 +117,17 @@ export default {
                     that.showScrollBar = true;
                     that.$forceUpdate();
 
-                    let svg = that.$el.querySelector("svg")
-                    svg.classList.remove('animate__fadeOutLeft');
-                    svg.classList.add('animate__fadeInLeft');
+                    let svg = that.$el.querySelectorAll("svg")
+                    if(that.showVertical === false)
+                        svg = svg[1];
+                    else svg = svg[0];
 
+                    svg.classList.remove('animate__fadeOutLeft');
+                    svg.classList.remove('animate__fadeOutDown');
+
+                    if(window.innerWidth > 1024)
+                         svg.classList.add('animate__fadeInLeft');
+                    else svg.classList.add('animate__fadeInUp');
                 },2000)
             }
         }
