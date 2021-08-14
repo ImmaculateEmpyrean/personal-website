@@ -2,7 +2,7 @@
     <div class="form-container">
 
         <div class="element-container box">
-            <h1 class="is-size-1">Contact Me Form - </h1>
+            <h1 class="is-size-1">Contact Me Form- </h1>
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
                     <label class="label">From</label>
@@ -496,6 +496,8 @@ export default {
 
 <style lang="sass" scoped src="bulma/bulma.sass"/>
 <style lang="scss" scoped>
+    @import '../assets/sass/_settings.scss';
+
     .form-container{
         flex: 1 1 100%;
 
@@ -506,8 +508,11 @@ export default {
     }
 
     .element-container{
-        width: 75%;
-        border: 1px solid black;
+        width: 100%;
+        @include atleast-desktop{
+            width: 75%;
+            border: 1px solid black;
+        }
     }
 
     #submitButton{

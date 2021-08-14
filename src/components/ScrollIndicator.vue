@@ -69,6 +69,9 @@ export default {
                 }
             }
         },
+        isOverflownY(element) {
+            return element.scrollHeight > element.clientHeight;
+        },
         hide(){
             if(this.showScrollBar === true){
                 let that = this;
@@ -81,12 +84,25 @@ export default {
                     that.showScrollBar = false;
                     that.$forceUpdate();
                     that.$el.classList.add('collapsed');
+
+
+                     let page = document.querySelector('#app > .page');
+                     if(that.isOverflownY(page)){
+                        //this page can be scrolled by normal means
+                        page.style.height = 'auto'; //this is done so as to allow the calculation of height in phones excluding the url bar
+                        page.style.overflowY = "auto";
+                     }
                 },2000);
             }
         },
         show(){
             if(this.showScrollBar === false){
                 let that = this;
+
+                 let page = document.querySelector('#app > .page');
+                    page.style.height = `${window.innerHeight}px`; //this is done so as to allow the calculation of height in phones excluding the url bar
+                    page.style.overflowY = "hidden";
+
                 this.$el.classList.remove('collapsed');
 
                 setTimeout(function(){
@@ -113,7 +129,11 @@ export default {
 
     .scroll-box {
         transition: flex-basis 2s;
-        flex: 1 1 5%;
+        flex: 1 1 15%;
+
+        @include atleast-desktop{
+            flex: 1 1 5%;
+        }
 
         display: flex;
         flex-direction: column;

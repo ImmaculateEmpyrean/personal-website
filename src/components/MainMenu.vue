@@ -1,10 +1,10 @@
 <template>
     <div class="main-menu hidden">
 			<ul>
-				<li><Button @buttonClicked="navToPortfolio" buttonText="Portfolio" showButton="true" class="color-inverted full-width" /></li>
-				<li><Button @buttonClicked="navToMe" buttonText="About Me"  showButton="true" class="color-inverted full-width" /></li>
-				<li><Button @buttonClicked="navToContact" buttonText="Contact Information"  showButton="true" class="color-inverted full-width" /></li>
-				<li><Button @buttonClicked="navToLeaveMessageHere" buttonText="Leave Message Here"  showButton="true" class="color-inverted full-width" /></li>
+				<li><Button @buttonClicked="navToPortfolio" buttonText="Portfolio" :showButton="true" class="color-inverted full-width" /></li>
+				<li><Button @buttonClicked="navToMe" buttonText="About Me"  :showButton="true" class="color-inverted full-width" /></li>
+				<li><Button @buttonClicked="navToContact" buttonText="Contact Information"  :showButton="true" class="color-inverted full-width" /></li>
+				<li><Button @buttonClicked="navToLeaveMessageHere" buttonText="Leave Message Here"  :showButton="true" class="color-inverted full-width" /></li>
 			</ul>
 		</div>
 </template>

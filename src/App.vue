@@ -73,6 +73,29 @@ export default {
         this.pageEnterAnimation = "animate__animated animate__zoomIn";
         this.pageLeaveAnimation = "animate__animated animate__zoomOut";
     }
+  },
+  mounted(){
+    console.log('mounted app');
+
+    let fixedHeightPage = this.$refs.ScrollIndicator.showScrollBar;
+    document.addEventListener('resize',function(){
+      if(fixedHeightPage === true ){
+        let page = document.querySelector('#app > .page');
+        page.style.height = `${window.innerHeight}px`; //this is done so as to allow the calculation of height in phones excluding the url bar   
+        page.style.overflowY = "hidden";
+      }
+      else {
+        let page = document.querySelector('#app > .page');
+        page.style.height = "auto"; //this is done so as to allow the calculation of height in phones excluding the url bar   
+        page.style.overflowY = "auto";
+      }  
+    })
+
+    //the home page as I know is not scrollable by normal means
+    let page = document.querySelector('#app > .page');
+    page.style.height = `${window.innerHeight}px`; //this is done so as to allow the calculation of height in phones excluding the url bar
+    page.style.overflowX = "hidden";
+    page.style.overflowY = "hidden";
   }
 }
 </script>
@@ -97,7 +120,7 @@ export default {
 
   body{
       font-family: 'Futura', sans-serif;
-      overflow: hidden;
+      //overflow: hidden;
   }
 
   //these variables are used to setup the animate.css framework defaults.. removing these MAY CAUSE DANGEROUS UNFORSEEN PROBLEMS AS IT WILL LIKELY BREAK A SERIES OF SETTIMEOUTS SOMEWHERE
@@ -109,7 +132,7 @@ export default {
   .page{
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    //height: 100vh;
   }
 
   .router-content{
