@@ -4,7 +4,7 @@
         :heading1="heading1" :heading2="heading2" :caption="caption" :description="description"
         :showCaption="showCaption" :showButton="showButton"/>
 
-        <MainImageDisplay :imagePath="imagePath"/>
+        <MainImageDisplay :imagePath="imagePath" :imagePosition="imagePosition"/>
     </div>
 </template>
 
@@ -47,6 +47,10 @@ export default {
         },
         imagePath:{
             default: require("@/assets/sharpended-home-image.png")
+        },
+        imagePosition:{
+            type: String,
+            default: 'center'
         }
     },
 

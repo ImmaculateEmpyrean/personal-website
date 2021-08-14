@@ -1,6 +1,6 @@
 <template>
     <Content :heading1="heading1" :heading2="heading2" :caption="caption" :description="description"
-             :showCaption="showCaption" :showButton="showButton" :imagePath="imagePath"
+             :showCaption="showCaption" :showButton="showButton" :imagePath="imagePath" :imagePosition="'left'"
              @wheel="wheelEvent" v-touch:swipe.top="swipeUp" v-touch:swipe.bottom="swipeDown" />
 </template>
 
