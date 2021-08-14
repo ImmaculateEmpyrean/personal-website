@@ -16,9 +16,10 @@
         
        <svg class="right hamburger-menu" @click="hamburgerIconClicked"
             width="50" height="34" viewBox="0 0 50 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect y="30.006" width="50" height="3.334" rx="1.667" fill="black"/>
-                <rect width="50" height="3.334" rx="1.667" fill="black"/>
-                <rect y="15.0031" width="50" height="3.334" rx="1.667" fill="black"/>
+
+            <rect class="hamburger-bar-one"   width="50" height="3.334" rx="1.667" fill="black"/>
+            <rect class="hamburger-bar-two"   y="15.0031" width="50" height="3.334" rx="1.667" fill="black"/>
+            <rect class="hamburger-bar-three" y="30.006" width="50" height="3.334" rx="1.667" fill="black"/>   
         </svg>
 
     </div>
@@ -68,6 +69,10 @@ export default {
         column-gap: $spacing-normal;
 
         img{ @extend .main-logo; }
+        h1{
+            transition: 2s color;
+            color: black; 
+        }
     }
 
     .center{
@@ -79,10 +84,14 @@ export default {
         font-size: 30px;
         
         color: black;
+        a { 
+            transition: color 2s;
+            color: black; 
+        }
 
         @include atleast-tablet{
-            margin-left: auto;  
-            margin-right: $spacing-normal; 
+            margin-left: auto;
+            margin-right: $spacing-normal;
         }
     }
 
@@ -113,12 +122,13 @@ export default {
         color: white;
         background: black;
 
-       .left{
-
-       }
+        .left{
+            h1{ color: white; }
+        }
 
        .center{
            color: white;
+           a{ color: white; }
        }
 
        .right{
@@ -136,6 +146,6 @@ export default {
 
                 fill: white;
             }
-       }
+        }
     }
 </style>
