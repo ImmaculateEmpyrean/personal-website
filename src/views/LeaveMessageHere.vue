@@ -476,7 +476,7 @@ export default {
             this.$router.push('/LoadingScreen');
 
             const axios = require('axios').default;
-            axios.post('/LeaveMessage',messageDetails).then(function(res){
+            axios.post('/leaveMessageHere',messageDetails).then(function(res){
                 console.log('response recieved');
                 that.$router.push('/ThankYou');
             }).catch(function(error){

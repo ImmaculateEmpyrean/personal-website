@@ -28,6 +28,11 @@ export default {
         Button
     },
     async mounted(){
+        this.$emit('updateScrollIndicator',{
+            showScrollIndicator: false,
+            pageNumber: null
+        });
+
         let paraOne     = this.$el.querySelector('#paragraph-1');
         let paraTwo     = this.$el.querySelector('#paragraph-2');
         let paraThree   = this.$el.querySelector('#paragraph-3');
@@ -83,16 +88,12 @@ export default {
                 },this)
                 .start();
     },
-    mounted(){
-        this.$emit('updateScrollIndicator',{
-            showScrollIndicator: false,
-            pageNumber: null
-        });
-    }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+    @import '../assets/sass/_settings.scss';
+
     .thank-you-container{
         flex: 1 1 100%;
     }
@@ -107,9 +108,17 @@ export default {
     }
 
     .paragraph{
-        font-size: 1.5vw;
+        font-size: 16px;
         margin: 48px;
         max-width: 1000px;
+
+        @include atleast-tablet{
+            font-size: 20px;
+        }
+
+        @include atleast-desktop{
+            font-size: 1.5vw;
+        }
     }
 
     #signature{
@@ -124,5 +133,9 @@ export default {
 
     #line-logo.show{
         display: block;
+    }
+
+    button{
+        margin-top: $spacing-normal;
     }
 </style>
