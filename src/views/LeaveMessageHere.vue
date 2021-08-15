@@ -350,7 +350,7 @@
                         <button class="button" id="submitButton" @click="submitValidation">Send Message</button>
                     </div>
                     <div class="control">
-                        <button class="button is-warning" id="cancelButton">Cancel</button>
+                        <button class="button is-warning" id="cancelButton" @click="cancelClicked">Cancel</button>
                     </div>
                 </div>
             </div>
@@ -374,6 +374,10 @@ export default {
         }
     },
     methods:{
+        async cancelClicked(){
+            await this.$emit('setTransitionZoom');
+            this.$router.push('/ContactMe');
+        },
         submitValidation(){
             console.log('talked yes check : ',this.$el.querySelector('#talkedYesCheck').checked)
             console.log('talked no check : ',this.$el.querySelector('#talkedNoCheck').checked);

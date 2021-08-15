@@ -15,6 +15,7 @@
                 :is="Component"
                 @renderPreviousView="renderPreviousView"
                 @renderNextView="renderNextView"
+                @setTransitionZoom="setTransitionZoom"
                 @updateScrollIndicator="updateScrollIndicator"
               ></component>
           </transition>
@@ -53,6 +54,10 @@ export default {
     renderNextView(){
         this.pageEnterAnimation = "animate__animated animate__backInUp";
         this.pageLeaveAnimation = "animate__animated animate__backOutUp";
+    },
+    setTransitionZoom(){
+        this.pageEnterAnimation = "animate__animated animate__zoomIn";
+        this.pageLeaveAnimation = "animate__animated animate__zoomOut";
     },
     updateScrollIndicator(obj){
         if(obj.showScrollIndicator === true){

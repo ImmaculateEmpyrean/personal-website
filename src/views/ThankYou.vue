@@ -9,7 +9,7 @@
 
         <p class="paragraph" id="signature"></p>
         <img id="line-logo" src="@/assets/logo-line.svg" alt="logo-line" width = "250">
-        <Button :showButton="true" buttonText="Okay" id="okay-button"/>
+        <Button @buttonClicked="processOkay" :showButton="true" buttonText="Okay" id="okay-button"/>
     </div>
 </template>
 
@@ -26,6 +26,12 @@ export default {
     },
     components:{
         Button
+    },
+    methods:{
+        processOkay(){
+            this.$emit('setTransitionZoom');
+            this.$router.push('/ContactMe');
+        }
     },
     async mounted(){
         this.$emit('updateScrollIndicator',{

@@ -4,16 +4,16 @@
                          :showButton="showButton" :showCaption="showCaption"/>
         <div class="picture-placeholder" v-show="onlyTablet"></div>
         <ul>
-            <li>I recieve mail : <strong>ImmaculateEmpyrean@gmail.com</strong></li>
+            <li>I recieve mail : <strong>Empyrean@veeru.me</strong></li>
             <li>I am on Discord:
                 <span class="discord-id">
                     <img src= "@/assets/discord-profile-picture.png">
-                    <strong>empyrean#4242</strong>
+                    <strong>Empyrean#4242</strong>
                 </span>
             </li>
-            <li><a href="">Have a Github preference?</a></li>
-            <li>My LinkedIn page</li>
-            <li><strong>Leave a message here on this site</strong></li>
+            <li><a href="https://github.com/ImmaculateEmpyrean">Have a Github preference?</a></li>
+            <li><a href="#">My LinkedIn page</a></li>
+            <li><router-link @click="navigateToLeaveMessageHere" to=""><strong>Leave a message here on this site</strong></router-link></li>
         </ul>
     </div>
 </template>
@@ -44,6 +44,12 @@ export default {
             }
             else return false
         }
+    },
+    methods:{
+        async navigateToLeaveMessageHere(){
+            await this.$emit("setTransitionZoom");
+            this.$router.push('/LeaveMessageHere');
+        }
     }
 }
 
@@ -70,15 +76,23 @@ export default {
     }
 
     li{
+        transition: color 2s,background-color 2s,border 2s;
         padding: 1vh 1vw;
         margin: 1vh 1vw;
         margin-left: 0;
         cursor: pointer;
 
         border: 2px solid black;
+        color: black;
+        background-color: white;
+
         font-size: 16px;
         font-family: "futura";
-        
+
+        a{
+            transition: all 2s;
+            color: black;
+        }
 
         .discord-id{
             display: inline-flex;
@@ -91,6 +105,20 @@ export default {
             img{
                 width: 75px;
                 border-radius: 50%;
+            }
+        }
+
+        &:hover{
+            color: white;
+            border: 2px solid white;
+            background-color: black;
+
+            a{
+                color: white;
+            }
+
+            .discord-id{
+                border: 1px solid white;
             }
         }
 

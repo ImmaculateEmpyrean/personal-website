@@ -1,6 +1,6 @@
 <template>
     <div class="contact-wrapper" @wheel="wheelEvent" v-touch:swipe.bottom="swipeDown">
-        <ContactPanel />
+        <ContactPanel @setTransitionZoom="$emit('setTransitionZoom')"/>
         <MainImageDisplay :imagePath="imagePath" v-show="atleastDesktop"/>
     </div>
 </template>
