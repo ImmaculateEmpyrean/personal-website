@@ -1,0 +1,23 @@
+{
+  "name": "personal-website-automation-scripts",
+  "version": "1.0.0",
+  "description": "this package will essentially be used to setup my automation scripts for building and deploying on my server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ImmaculateEmpyrean/personal-website.git"
+  },
+  "author": "veeru",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ImmaculateEmpyrean/personal-website/issues"
+  },
+  "homepage": "https://github.com/ImmaculateEmpyrean/personal-website#readme",
+  "dependencies": {
+    "fs-extra": "^10.0.0",
+    "glob": "^7.1.7"
+  }
+}
