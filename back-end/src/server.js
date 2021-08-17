@@ -149,13 +149,10 @@ async function sendMail(to, subject, message) {
 	});
 
 	// send mail with defined transport object
-	let info = await transporter.sendMail({
+	await transporter.sendMail({
 		from: '"bot empyrean" <botempyrean@gmail.com>', // sender address
 		to: to, //reciever
 		subject: subject,
 		html: message,
 	});
-
-	console.log("Message sent: %s", info.messageId);
-	console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 }
