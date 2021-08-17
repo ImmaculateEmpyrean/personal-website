@@ -1,6 +1,7 @@
 <template>
     <div class="container">
         <MainTextDisplay 
+        @buttonClicked="$emit('buttonClicked')"
         :heading1="heading1" :heading2="heading2" :caption="caption" :description="description"
         :showCaption="showCaption" :showButton="showButton"/>
 
@@ -67,7 +68,10 @@ export default {
     @import '../assets/sass/_settings.scss';
 
     .container{
+        transition: max-height 2s;
         flex: 1 1 100%;
+        max-height: 100%;
+
         display: flex;
         flex-direction: column;
 

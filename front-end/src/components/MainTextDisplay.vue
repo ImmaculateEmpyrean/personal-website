@@ -1,13 +1,15 @@
 <template>
     <div class="text-box">
-        <h1>{{heading1}}</h1>
-        <h1>
-            {{heading2}}
-            <h2 v-show="showCaption">{{caption}}</h2>
-        </h1>
-        <img src="@/assets/logo-line.svg" alt="logo-line" width = "250">
-        <p>{{description}}</p>
-        <Button :buttonText="buttonText" :showButton="showButton"/>
+        <div class="text-box-internal">
+            <h1>{{heading1}}</h1>
+            <h1>
+                {{heading2}}
+                <h2 v-show="showCaption">{{caption}}</h2>
+            </h1>
+            <img src="@/assets/logo-line.svg" alt="logo-line" width = "250">
+            <p>{{description}}</p>
+            <Button :buttonText="buttonText" :showButton="showButton" @buttonClicked="$emit('buttonClicked')"/>
+        </div>
     </div>
 </template>
 
@@ -64,6 +66,11 @@ export default {
         justify-content: flex-start;
 
         @include atleast-desktop{ justify-content: center; }
+    }
+
+    .text-box-internal{
+        display: flex;
+        flex-direction: column;
     }
 
     img{

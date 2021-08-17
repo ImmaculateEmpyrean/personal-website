@@ -17,6 +17,7 @@
                 @renderNextView="renderNextView"
                 @setTransitionZoom="setTransitionZoom"
                 @updateScrollIndicator="updateScrollIndicator"
+                @enablePageScrolling="enablePageScrolling" @disablePageScrolling="disablePageScrolling"
               ></component>
           </transition>
         </router-view>
@@ -77,6 +78,17 @@ export default {
 
         this.pageEnterAnimation = "animate__animated animate__zoomIn";
         this.pageLeaveAnimation = "animate__animated animate__zoomOut";
+    },
+
+    disablePageScrolling(){
+        let page = document.querySelector('#app > .page');
+        page.style.height = `${window.innerHeight}px`; //this is done so as to allow the calculation of height in phones excluding the url bar   
+        page.style.overflowY = "hidden";
+    },
+    enablePageScrolling(){
+        let page = document.querySelector('#app > .page');
+        page.style.height = "auto";
+        page.style.overflowY = "auto";
     }
   },
   mounted(){
@@ -85,14 +97,10 @@ export default {
     let fixedHeightPage = this.$refs.ScrollIndicator.showScrollBar;
     document.addEventListener('resize',function(){
       if(fixedHeightPage === true ){
-        let page = document.querySelector('#app > .page');
-        page.style.height = `${window.innerHeight}px`; //this is done so as to allow the calculation of height in phones excluding the url bar   
-        page.style.overflowY = "hidden";
+          this.disablePageScrolling();
       }
       else {
-        let page = document.querySelector('#app > .page');
-        page.style.height = "auto"; //this is done so as to allow the calculation of height in phones excluding the url bar   
-        page.style.overflowY = "auto";
+          this.enablePageScrolling();
       }  
     })
 
