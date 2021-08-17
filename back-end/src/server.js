@@ -22,6 +22,24 @@ app.listen(port, function () {
 	console.log("server running on port 4000");
 });
 
+//get requests
+app.get('/',function(req,res){
+	res.sendFile(path.resolve(__dirname,'www/index.html'));
+});
+app.get('/DevJourney',function(req,res){
+	res.sendFile(path.resolve(__dirname,'www/index.html'));
+})
+app.get('/Me',function(req,res){
+	res.sendFile(path.resolve(__dirname,'www/index.html'));
+})
+app.get('/ContactMe',function(req,res){
+	res.sendFile(path.resolve(__dirname,'www/index.html'));
+});
+app.get('/LeaveMessageHere',function(req,res){
+	res.sendFile(path.resolve(__dirname,'www/index.html'));
+});
+
+
 //leave-message-here
 app.post("/leaveMessageHere", async function (req, res) {
 	//get all the information passed to me
