@@ -1,16 +1,21 @@
 <template>
+<div class="me-container">
     <Content :heading1="heading1" :heading2="heading2" :caption="caption" :description="description"
              :showCaption="showCaption" :showButton="showButton" :imagePath="imagePath" :imagePosition="'left'"
              @wheel="wheelEvent" v-touch:swipe.top="swipeUp" v-touch:swipe.bottom="swipeDown" />
+    <MeDetail />
+</div>
 </template>
 
 <script>
 import Content from '@/components/Content.vue';
+import MeDetail from '@/components/MeDetail.vue';
 
 export default {
     name: 'Me',
     components: {
-        Content
+        Content,
+        MeDetail
     },
     data (){
         return {
