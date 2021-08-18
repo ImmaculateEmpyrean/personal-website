@@ -13,6 +13,7 @@
             <MeDetail   v-show="showMeDetail" 
                         @enablePageScrolling="$emit('enablePageScrolling')" 
                         @disablePageScrolling="$emit('disablePageScrolling')"
+                        @setTransitionZoom="$emit('setTransitionZoom')"
                         @hide-MeDetail="hideMeDetailWindow"/>
         </transition>
     </div>

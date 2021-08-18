@@ -37,7 +37,7 @@ export default {
         }
     },
   methods:{
-    async wheelEvents(e){
+    async wheelEvent(e){
       if(this.processWheel === true){
         if(e.deltaY > 0){
           await this.$emit("renderNextView");

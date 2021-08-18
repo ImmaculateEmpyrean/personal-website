@@ -96,11 +96,9 @@ export default {
     },
     hideScrollIndicator(){
       this.$refs.ScrollIndicator.hide();
-      //this.$forceUpdate();
     },
     showScrollIndicator(){
       this.$refs.ScrollIndicator.show();
-      //this.$forceUpdate();
     }
 
   },

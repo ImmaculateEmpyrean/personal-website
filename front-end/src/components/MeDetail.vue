@@ -315,7 +315,8 @@ export default {
         sendToContactPage(){
             let that = this;
             this.$emit('hide-MeDetail');
-
+            this.$emit('setTransitionZoom');
+            
             setTimeout(function(){
                 that.$router.push('/LeaveMessageHere');
             },8000);
