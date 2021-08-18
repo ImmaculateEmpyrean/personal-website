@@ -148,10 +148,7 @@ export default {
                         that.$emit('showScrollIndicator');
                     },2000)
                 }, 2000);
-            }); 
-
-
-            
+            });
         }
     },
     mounted(){

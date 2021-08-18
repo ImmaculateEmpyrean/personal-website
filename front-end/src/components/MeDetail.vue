@@ -296,7 +296,9 @@
                 <div class="columns">
                     <div class="column is-two-quarters"></div>
                     <div class="column is-6">
-                        <button class="back-button button is-black is-medium">Go Back</button>
+                        <button
+                            @click="processGoBack"
+                            class="back-button button is-black is-medium">Go Back</button>
                     </div>
                     <div class="column is-1"></div>
                 </div>
@@ -317,6 +319,9 @@ export default {
             setTimeout(function(){
                 that.$router.push('/LeaveMessageHere');
             },8000);
+        },
+        processGoBack(){
+            this.$emit('hide-MeDetail');
         }
     }
 }
