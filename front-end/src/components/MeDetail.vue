@@ -221,12 +221,14 @@
                     <div class="block">
                         <div class="box">
                             <h1 class="title is-2">I have a reading list</h1>
-                            <p>I use my reading list to keep track of some of the major books I would like to read. </p>
-                            <p>Something piqued your intrest or want to talk with me about a specific book, leave me a message using the button below.</p>
                             <div class="columns">
-                                <div class="column is-three-quarters"></div>
-                                <div class="column is-half">
-                                    <button @click="sendToContactPage" class="msg-leave button is-black">Leave Me A Message</button>
+                                <div class="column is-three-quarters">
+                                    <p>I use my reading list to keep track of some of the major books I would like to read. </p>
+                                    <p>I am a great listener when it comes to a broad range of topics.</p>
+                                    <p><strong>Do leave me a message and we can get to know each other</strong></p>
+                                </div>
+                                <div class="column is-half align-flex-end">
+                                    <button @click="sendToContactPage" class="msg-leave button is-dark">Leave Me A Message</button>
                                 </div>
                             </div>
                         </div>
@@ -316,7 +318,7 @@ export default {
             let that = this;
             this.$emit('hide-MeDetail');
             this.$emit('setTransitionZoom');
-            
+
             setTimeout(function(){
                 that.$router.push('/LeaveMessageHere');
             },8000);
@@ -339,9 +341,15 @@ export default {
     @import 'bulma/bulma.sass';
 
     //my styling
+    
     .tri-cards{
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+    }
+
+    //used in columns to align something to the end of said column
+    .align-flex-end{
+        align-self:flex-end;
     }
 </style>
