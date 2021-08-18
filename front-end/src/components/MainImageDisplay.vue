@@ -60,7 +60,7 @@ export default {
         }
 
         @include atleast-desktop{
-            background-size: cover;
+            background-size: contain;
             background-position: center center;
         }
         
