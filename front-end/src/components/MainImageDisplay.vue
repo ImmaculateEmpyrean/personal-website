@@ -44,7 +44,7 @@ export default {
     @import '../assets/sass/_settings.scss';
 
     .picture-box{
-        transition: filter 2s;
+        transition: filter 2s,background-position 2s,background-size 2s;
         flex: 1 1 55%;
 
         background-repeat: no-repeat;
@@ -62,6 +62,8 @@ export default {
 
         &.inverted-color{
             filter: invert(1);
+            background-size: contain;
+            background-position: center right;
         }
     }
 </style>
