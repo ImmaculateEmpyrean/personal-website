@@ -26,7 +26,7 @@
                         <div class="card-content">
                             <h1>My Video Game Journey &#128513;</h1>
                             <div class="media">
-                                <div class="columns columns-empyr-row">
+                                <div class="columns is-mobile">
                                     <div class="column is-2">
                                         <figure class="image is-96x96"> <img src="@/assets/desktop.svg" alt="Placeholder image"> </figure>
                                     </div>
@@ -104,7 +104,7 @@
                             <div class="block">
                                 <h1>Some Noteworthy anime I happen to remember now</h1> </div>
                             <div class="media">
-                                <div class="columns columns-empyr-row">
+                                <div class="columns is-mobile">
                                     <div class="column is-one-quarter">
                                         <figure class="image is-64x64"> <img src="@/assets/Noragami.jpg" alt="noragami image"> </figure>
                                     </div>
@@ -182,7 +182,7 @@
                         <div class="card-content">
                             <h1>Books Along The Way</h1>
                             <div class="media">
-                                <div class="columns columns-empyr-row">
+                                <div class="columns is-mobile">
                                     <div class="column is-one-quarter">
                                         <figure class="image is-64x64"> <img src="@/assets/romance-of-the-three-kingdoms.jpeg" alt="Placeholder image"> </figure>
                                     </div>
@@ -322,6 +322,4 @@
         flex-direction: column;
         justify-content: space-between;
     }
-
-
 </style>
