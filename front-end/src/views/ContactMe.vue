@@ -15,6 +15,12 @@ export default {
         ContactPanel,
         MainImageDisplay
     },
+    props:{
+        processWheel:{
+            type: Boolean,
+            default: true
+        }
+    },
     data(){
         return {
             imagePath: require('@/assets/contact-me.png'),
@@ -25,14 +31,18 @@ export default {
     },
     methods:{
         async wheelEvent(e){
-             if (e.deltaY < 0) {
-                await this.$emit("renderPreviousView");
-                this.$router.push(this.previous);
-            } 
+            if(this.processWheel === true){
+                if (e.deltaY < 0) {
+                    await this.$emit("renderPreviousView");
+                    this.$router.push(this.previous);
+                } 
+            }
         },
         async swipeDown(){
-            await this.$emit("renderPreviousView");
-            this.$router.push(this.previous);
+            if(this.processWheel === true){
+                await this.$emit("renderPreviousView");
+                this.$router.push(this.previous);
+            }
         }
     },
     computed: {

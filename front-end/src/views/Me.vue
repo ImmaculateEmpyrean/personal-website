@@ -49,6 +49,12 @@ export default {
             imageInvertColor: false
         }
     },
+    props:{
+        processWheel:{
+            type: Boolean,
+            default: true
+        }
+    },
     methods:{
         scrollTo(offset, callback) {
             const fixedOffset = offset.toFixed();
@@ -67,22 +73,28 @@ export default {
             })
         },
         async wheelEvent(e){
-             if (e.deltaY < 0) {
-                await this.$emit("renderPreviousView");
-                this.$router.push(this.previous);
-            } else if (e.deltaY > 0) {
-                await this.$emit("renderNextView");
-                this.$router.push(this.next);
+            if(this.processWheel === true){
+                if (e.deltaY < 0) {
+                   await this.$emit("renderPreviousView");
+                   this.$router.push(this.previous);
+                } else if (e.deltaY > 0) {
+                   await this.$emit("renderNextView");
+                   this.$router.push(this.next);
+                }
             }
         },
 
         async swipeUp(){
-            await this.$emit("renderNextView");
-            this.$router.push(this.next);
+            if(this.processWheel === true){
+                await this.$emit("renderNextView");
+                this.$router.push(this.next);
+            }
         },
         async swipeDown(){
-            await this.$emit("renderPreviousView");
-            this.$router.push(this.previous);
+            if(this.processWheel === true){
+                await this.$emit("renderPreviousView");
+                this.$router.push(this.previous);
+            }
         },
 
         processMeDetail() {
@@ -94,6 +106,7 @@ export default {
 
         showMeDetailWindow(){
             let that = this;
+            this.$emit('disableProcessWheel');
 
             this.$emit('hideScrollIndicator');
             setTimeout(function(){
@@ -146,6 +159,8 @@ export default {
 
                     setTimeout(function(){
                         that.$emit('showScrollIndicator');
+                        that.$emit('enableProcessWheel');
+
                     },2000)
                 }, 2000);
             });

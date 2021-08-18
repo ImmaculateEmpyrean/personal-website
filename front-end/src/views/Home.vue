@@ -30,17 +30,27 @@ export default {
         pageNumber: 1
     }
   },
+  props:{
+        processWheel:{
+            type: Boolean,
+            default: true
+        }
+    },
   methods:{
-    async wheelEvent(e){
-             if (e.deltaY > 0) {
-                await this.$emit("renderNextView");
-                this.$router.push(this.next);
-            }
-        },
-    async swipeUp(e){
+    async wheelEvents(e){
+      if(this.processWheel === true){
+        if(e.deltaY > 0){
           await this.$emit("renderNextView");
           this.$router.push(this.next);
         }
+      }
+    },
+    async swipeUp(e){
+      if(this.processWheel === true){
+        await this.$emit("renderNextView");
+        this.$router.push(this.next);
+      }
+    }
   },
 
   mounted(){

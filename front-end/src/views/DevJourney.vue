@@ -12,6 +12,12 @@ export default {
     components: {
         Content
     },
+    props:{
+        processWheel:{
+            type: Boolean,
+            default: true
+        }
+    },
     data (){
         return {
             heading1:"Dev",
@@ -32,22 +38,28 @@ export default {
     },
     methods:{
         async wheelEvent(e){
-             if (e.deltaY < 0) {
-                await this.$emit("renderPreviousView");
-                this.$router.push(this.previous);
-            } else if (e.deltaY > 0) {
-                await this.$emit("renderNextView");
-                this.$router.push(this.next);
+            if(this.processWheel === true){
+                if (e.deltaY < 0) {
+                    await this.$emit("renderPreviousView");
+                    this.$router.push(this.previous);
+                } else if (e.deltaY > 0) {
+                    await this.$emit("renderNextView");
+                    this.$router.push(this.next);
+                }
             }
         },
 
         async swipeUp(){
-            await this.$emit("renderNextView");
-            this.$router.push(this.next);
+            if(this.processWheel === true){
+                await this.$emit("renderNextView");
+                this.$router.push(this.next);
+            }
         },
         async swipeDown(){
-            await this.$emit("renderPreviousView");
-            this.$router.push(this.previous);
+            if(this.processWheel === true){
+                await this.$emit("renderPreviousView");
+                this.$router.push(this.previous);
+            }
         }
     },
     mounted(){

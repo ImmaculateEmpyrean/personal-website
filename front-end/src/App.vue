@@ -12,13 +12,15 @@
             mode="out-in"
           >
               <component 
-                :is="Component"
+                :is="Component" :processWheel="processWheel"
                 @renderPreviousView="renderPreviousView"
                 @renderNextView="renderNextView"
                 @setTransitionZoom="setTransitionZoom"
                 @updateScrollIndicator="updateScrollIndicator"
                 @enablePageScrolling="enablePageScrolling" @disablePageScrolling="disablePageScrolling"
                 @hideScrollIndicator="hideScrollIndicator" @showScrollIndicator="showScrollIndicator"
+
+                @enableProcessWheel="processWheel=true" @disableProcessWheel="processWheel=false"
               ></component>
           </transition>
         </router-view>
@@ -45,7 +47,8 @@ export default {
     return {
       pageEnterAnimation: "animate__animated animate__backInDown",
       pageLeaveAnimation: "animate__animated animate__backOutDown",
-      testVar: true
+      testVar: true,
+      processWheel: true
     }
   },
   methods:{
