@@ -314,9 +314,14 @@
 
     $link: #E12A2A;
 
-    @import 'bulma/bulma.sass'
+    @import 'bulma/bulma.sass';
 
     //my styling
+    .tri-cards{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 
 
 </style>
