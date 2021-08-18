@@ -46,7 +46,6 @@ export default {
             previous: "DevJourney",
 
             showMeDetail: false,
-
             imageInvertColor: false
         }
     },
