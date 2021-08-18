@@ -65,59 +65,64 @@ export default {
             this.$router.push(this.previous);
         },
 
-        processMeDetail(){
+        processMeDetail() {
+            if(this.showMeDetail == false)
+                this.showMeDetailWindow();
+            else
+                this.hideMeDetailWindow();
+        },
+
+        showMeDetailWindow(){
             let that = this;
 
-            if(this.showMeDetail == false){
-                this.$emit('hideScrollIndicator');
-                setTimeout(function(){
-                    let content =  that.$el.querySelector('.container');
-                    content.classList.add('inverted-color');
-                    
-                    let button = content.querySelector('button');
-                    button.classList.add("color-inverted");
-                    
-                    that.imageInvertColor = true;
-
-                    const textBoxInternal = document.querySelector('.text-box-internal')
-                    const textBoxInternalStyle = getComputedStyle(textBoxInternal);
-                    content.style.maxHeight = textBoxInternalStyle.height;
-                },2000)
-
-                setTimeout(function(){
-                    that.showMeDetail = true;
-
-                    setTimeout(function(){
-                        that.$emit('enablePageScrolling');
-                    },2000);
-                },4000);
-            }
-            else{
-                if ('scrollRestoration' in history) 
-                    history.scrollRestoration = 'manual';
-                window.scrollTo(0,0);
-                that.$emit('disablePageScrolling');
-                
-                this.showMeDetail = false;
-
+            this.$emit('hideScrollIndicator');
+            setTimeout(function(){
                 let content =  that.$el.querySelector('.container');
-                content.classList.remove('inverted-color');
+                content.classList.add('inverted-color');
                 
                 let button = content.querySelector('button');
-                button.classList.remove("color-inverted");
+                button.classList.add("color-inverted");
                 
-                that.imageInvertColor = false;
+                that.imageInvertColor = true;
+
+                const textBoxInternal = document.querySelector('.text-box-internal')
+                const textBoxInternalStyle = getComputedStyle(textBoxInternal);
+                content.style.maxHeight = textBoxInternalStyle.height;
+            },2000)
+
+            setTimeout(function(){
+                that.showMeDetail = true;
 
                 setTimeout(function(){
-                    const textBoxInternal = document.querySelector('.text-box-internal')
-                    const textBoxInternalStyle = getComputedStyle(textBoxInternal);
-                    content.style.maxHeight = "100%";
+                    that.$emit('enablePageScrolling');
+                },2000);
+            },4000);
+        },
+        hideMeDetailWindow(){
+            let that = this;
+            
+            if ('scrollRestoration' in history) 
+                history.scrollRestoration = 'manual';
+            window.scrollTo(0,0);
+            that.$emit('disablePageScrolling');
+            
+            this.showMeDetail = false;
 
-                    setTimeout(function(){
-                        that.$emit('showScrollIndicator');
-                    },2000)
-                }, 2000);
-            }
+            let content =  that.$el.querySelector('.container');
+            content.classList.remove('inverted-color');
+            
+            let button = content.querySelector('button');
+            button.classList.remove("color-inverted");
+            
+            that.imageInvertColor = false;
+
+            setTimeout(function(){
+                content.style.maxHeight = "100%";
+
+                setTimeout(function(){
+                    that.$emit('showScrollIndicator');
+                },2000)
+            }, 2000);
         }
     },
     mounted(){
