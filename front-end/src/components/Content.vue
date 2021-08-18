@@ -5,7 +5,7 @@
         :heading1="heading1" :heading2="heading2" :caption="caption" :description="description"
         :showCaption="showCaption" :showButton="showButton"/>
 
-        <MainImageDisplay :imagePath="imagePath" :imagePosition="imagePosition"/>
+        <MainImageDisplay :imagePath="imagePath" :imagePosition="imagePosition" :imageInvertColor="imageInvertColor"/>
     </div>
 </template>
 
@@ -52,6 +52,10 @@ export default {
         imagePosition:{
             type: String,
             default: 'center'
+        },
+        imageInvertColor: {
+            type: Boolean,
+            default: false
         }
     },
 
@@ -68,7 +72,7 @@ export default {
     @import '../assets/sass/_settings.scss';
 
     .container{
-        transition: max-height 2s;
+        transition: max-height 2s,color 2s, background-color 2s;
         flex: 1 1 100%;
         max-height: 100%;
 
@@ -77,6 +81,11 @@ export default {
 
         @include atleast-desktop{
             flex-direction: row;
+        }
+
+        &.inverted-color{
+            background-color: black;
+            color: white;
         }
     }
 </style>

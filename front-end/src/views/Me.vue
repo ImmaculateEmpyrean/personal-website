@@ -1,7 +1,7 @@
 <template>
 <div class="me-container">
     <Content :heading1="heading1" :heading2="heading2" :caption="caption" :description="description"
-             :showCaption="showCaption" :showButton="showButton" :imagePath="imagePath" :imagePosition="'left'"
+             :showCaption="showCaption" :showButton="showButton" :imagePath="imagePath" :imagePosition="'left'" :imageInvertColor="imageInvertColor"
              @wheel="wheelEvent" v-touch:swipe.top="swipeUp" v-touch:swipe.bottom="swipeDown" @buttonClicked="processMeDetail" />
     <div class="me-detail-container">
         <transition 
@@ -40,7 +40,9 @@ export default {
             next: "ContactMe",
             previous: "DevJourney",
 
-            showMeDetail: false
+            showMeDetail: false,
+
+            imageInvertColor: false
         }
     },
     methods:{
@@ -64,24 +66,26 @@ export default {
         },
 
         processMeDetail(){
-            //this.showMeDetail = true;
+            this.$emit('hideScrollIndicator');
             
-            let meDetail = this.$el.querySelector('.me-detail');
-            let content =  this.$el.querySelector('.container');
-            
-            content.classList.add('details-shown');
-
-            const element = document.querySelector('.text-box-internal')
-            const style = getComputedStyle(element)
-
-            console.log(style.height)
-
-            content.style.maxHeight = style.height;
-
             let that = this;
             setTimeout(function(){
-                that.showMeDetail = true;
+                let content =  that.$el.querySelector('.container');
+                content.classList.add('inverted-color');
+                that.imageInvertColor = true;
+
+                const textBoxInternal = document.querySelector('.text-box-internal')
+                const textBoxInternalStyle = getComputedStyle(textBoxInternal);
+                content.style.maxHeight = textBoxInternalStyle.height;
             },2000)
+
+            setTimeout(function(){
+                that.showMeDetail = true;
+
+                setTimeout(function(){
+                    that.$emit('enablePageScrolling');
+                },2000);
+            },4000);
         }
     },
     mounted(){
@@ -95,40 +99,8 @@ export default {
 
 <style lang="scss" scoped>
 .me-container{
+    flex: 1 1 100%;
     display: flex;
     flex-direction: column;
 }
-
-.me-detail-container{
-    //flex: 0 0 0%;
-    border: 1px solid blue;
-
-    &.shown{
-        flex: 0 0 auto;
-    }
-}
-
-.container{
-    max-height: 100%;
-}
-// .container{
-//     transition: height 2s, flex-basis 2s;
-    
-//     &.show{
-//         flex: 0 0 70%;
-//     }
-
-//     border: 1px solid red;
-// }
-
-// .me-detail{
-//     transition: flex-basis 2s;
-//     flex: 0 0 0%;
-
-//     border: 1px solid blue;
-
-//     &.show{
-//         flex: 0 0 30%;
-//     }
-// }
 </style>

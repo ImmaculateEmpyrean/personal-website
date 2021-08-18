@@ -15,6 +15,10 @@ export default {
         imagePosition : {
             type: String,
             default: "center"
+        },
+        imageInvertColor: {
+            type: Boolean,
+            default: false
         }
     },
     computed:{
@@ -22,9 +26,15 @@ export default {
             return `background-image: url('${this.imagePath}');`;
         },
         getClass(){
+            let cls = "";
             if(this.imagePosition === 'left')
-                return 'picture-box left';
-            else return "picture-box";
+                cls = cls + 'picture-box left ';
+            else cls = cls + "picture-box ";
+
+            if(this.imageInvertColor == true)
+                cls = cls + "inverted-color ";
+            
+            return cls;
         }
     },
 }
@@ -34,6 +44,7 @@ export default {
     @import '../assets/sass/_settings.scss';
 
     .picture-box{
+        transition: filter 2s;
         flex: 1 1 55%;
 
         background-repeat: no-repeat;
@@ -47,6 +58,10 @@ export default {
         @include atleast-desktop{
             background-size: cover;
             background-position: center center;
+        }
+
+        &.inverted-color{
+            filter: invert(1);
         }
     }
 </style>

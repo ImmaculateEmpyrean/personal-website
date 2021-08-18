@@ -18,6 +18,7 @@
                 @setTransitionZoom="setTransitionZoom"
                 @updateScrollIndicator="updateScrollIndicator"
                 @enablePageScrolling="enablePageScrolling" @disablePageScrolling="disablePageScrolling"
+                @hideScrollIndicator="hideScrollIndicator" @showScrollIndicator="showScrollIndicator"
               ></component>
           </transition>
         </router-view>
@@ -89,19 +90,24 @@ export default {
         let page = document.querySelector('#app > .page');
         page.style.height = "auto";
         page.style.overflowY = "auto";
+    },
+    hideScrollIndicator(){
+      this.$refs.ScrollIndicator.hide();
+      //this.$forceUpdate();
+    },
+    showScrollIndicator(){
+      this.$refs.ScrollIndicator.show();
+      //this.$forceUpdate();
     }
+
   },
   mounted(){
     console.log('mounted app');
 
     let fixedHeightPage = this.$refs.ScrollIndicator.showScrollBar;
     document.addEventListener('resize',function(){
-      if(fixedHeightPage === true ){
-          this.disablePageScrolling();
-      }
-      else {
-          this.enablePageScrolling();
-      }  
+      if(fixedHeightPage === true ) this.disablePageScrolling();
+      else this.enablePageScrolling();
     })
 
     //the home page as I know is not scrollable by normal means
