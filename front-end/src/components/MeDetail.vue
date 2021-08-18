@@ -151,7 +151,7 @@
                             <div class="columns">
                                 <div class="column is-three-quarters"></div>
                                 <div class="column is-one-quarter">
-                                    <button class="msg-leave button is-dark">Talk About Anime</button>
+                                    <button @click="sendToContactPage" class="msg-leave button is-dark">Talk About Anime</button>
                                 </div>
                             </div>
                         </div>
@@ -306,6 +306,17 @@
     </div>
 </div>
 </template>
+
+<script>
+export default {
+    methods:{
+        sendToContactPage(){
+            
+        }
+    }
+}
+</script>
+
 
 <style lang="scss" scoped>
     //customizing bulma

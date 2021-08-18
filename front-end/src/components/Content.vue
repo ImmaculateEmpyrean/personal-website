@@ -3,7 +3,8 @@
         <MainTextDisplay 
         @buttonClicked="$emit('buttonClicked')"
         :heading1="heading1" :heading2="heading2" :caption="caption" :description="description"
-        :showCaption="showCaption" :showButton="showButton"/>
+        :showCaption="showCaption" :showButton="showButton"
+        :buttonText="buttonText" />
 
         <MainImageDisplay :imagePath="imagePath" :imagePosition="imagePosition" :imageInvertColor="imageInvertColor"/>
     </div>
@@ -45,6 +46,10 @@ export default {
         showButton:{
             type: Boolean,
             default: false
+        },
+        buttonText:{
+            type: String,
+            default: "Tell Me More"
         },
         imagePath:{
             default: require("@/assets/sharpended-home-image.png")

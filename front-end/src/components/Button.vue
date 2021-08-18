@@ -1,5 +1,8 @@
 <template>
-    <button @click="$emit('buttonClicked')" v-show="showButton">{{buttonText}}</button>    
+    <button @click="$emit('buttonClicked')" v-show="showButton"
+            class="animate__animated" ref="button">
+            {{buttonTextInternal}}
+    </button>    
 </template>
 
 <script>
@@ -13,6 +16,30 @@ export default {
             type: Boolean,
             default: false
         }
+    },
+    data (){
+        return {
+            buttonTextInternal: "Tell Me More"
+        }
+    },
+    watch: { 
+      	buttonText: function(newValue, oldValue) {
+            let that = this;
+
+            let button = this.$refs.button;
+            console.log(this.$el);
+            button.classList.add('animate__fadeOut');
+            
+            setTimeout(function(){
+                button.classList.remove('animate__fadeOut');
+                button.classList.add('animate__fadeIn');
+                that.buttonTextInternal = newValue;
+            },2000)
+
+            setTimeout(function(){
+                button.classList.remove('animate__fadeIn');
+            },4000)
+        }
     }
 }
 </script>
@@ -20,7 +47,7 @@ export default {
 <style lang="scss" scoped>
     button{
         transition: background-color 1s,
-                    color 1s;
+                    color 1s, width 2s;
 
         background-color: #000000;
         color: white;
