@@ -27,7 +27,6 @@ export default {
             let that = this;
 
             let button = this.$refs.button;
-            console.log(this.$el);
             button.classList.add('animate__fadeOut');
             
             setTimeout(function(){

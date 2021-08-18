@@ -88,9 +88,10 @@ export default {
                 
                 that.imageInvertColor = true;
 
-                const textBoxInternal = document.querySelector('.text-box-internal')
+                let textBoxInternal = document.querySelector('.text-box-internal')
                 const textBoxInternalStyle = getComputedStyle(textBoxInternal);
                 content.style.maxHeight = textBoxInternalStyle.height;
+                textBoxInternal.classList.add('add-padding-left');
             },2000)
 
             setTimeout(function(){
@@ -113,7 +114,9 @@ export default {
 
             let content =  that.$el.querySelector('.container');
             content.classList.remove('inverted-color');
-            
+            let textBoxInternal = that.$el.querySelector('.text-box-internal');
+            textBoxInternal.classList.remove('add-padding-left');
+
             that.buttonText = "Tell Me More";
 
             let button = content.querySelector('button');

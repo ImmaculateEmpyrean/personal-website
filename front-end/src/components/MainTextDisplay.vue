@@ -56,6 +56,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    @import '../assets/sass/_settings.scss';
     @import '../assets/sass/_text.scss';
 
     .text-box {
@@ -69,8 +70,13 @@ export default {
     }
 
     .text-box-internal{
+        transition: padding 2s;
         display: flex;
         flex-direction: column;
+
+        &.add-padding-left{
+            padding-left: $spacing-large;
+        }
     }
 
     img{
