@@ -52,18 +52,31 @@ export default {
         background-position: center center;
 
         &.left{
-            background-position: center left;
+            background-position: center left;    
+
+            @include atleast-desktop{
+                background-position: center center;    
+            }
         }
 
         @include atleast-desktop{
             background-size: cover;
             background-position: center center;
         }
+        
 
         &.inverted-color{
             filter: invert(1);
             background-size: contain;
             background-position: center right;
+
+            &.left{
+               background-position: center left;
+
+                @include atleast-desktop{
+                    background-position: center right;
+                }
+            }
         }
     }
 </style>
