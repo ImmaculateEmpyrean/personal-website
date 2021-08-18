@@ -39,6 +39,9 @@ export default {
                 button.classList.remove('animate__fadeIn');
             },4000)
         }
+    },
+    mounted(){
+        this.buttonTextInternal = this.buttonText;
     }
 }
 </script>
