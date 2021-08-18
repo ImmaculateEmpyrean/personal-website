@@ -10,7 +10,10 @@
             :leave-active-class="'animate__animated animate__fadeOutDown'"
             mode="out-in"
         >
-            <MeDetail v-show="showMeDetail" @enablePageScrolling="$emit('enablePageScrolling')" @disablePageScrolling="$emit('disablePageScrolling')"/>
+            <MeDetail   v-show="showMeDetail" 
+                        @enablePageScrolling="$emit('enablePageScrolling')" 
+                        @disablePageScrolling="$emit('disablePageScrolling')"
+                        @hide-MeDetail="hideMeDetailWindow"/>
         </transition>
     </div>
 </div>
@@ -47,6 +50,22 @@ export default {
         }
     },
     methods:{
+        scrollTo(offset, callback) {
+            const fixedOffset = offset.toFixed();
+            const onScroll = function () {
+                    if (window.pageYOffset.toFixed() === fixedOffset) {
+                        window.removeEventListener('scroll', onScroll)
+                        callback()
+                    }
+                }
+
+            window.addEventListener('scroll', onScroll)
+            onScroll()
+            window.scrollTo({
+                top: offset,
+                behavior: 'smooth'
+            })
+        },
         async wheelEvent(e){
              if (e.deltaY < 0) {
                 await this.$emit("renderPreviousView");
@@ -105,32 +124,34 @@ export default {
         hideMeDetailWindow(){
             let that = this;
 
-            if ('scrollRestoration' in history) 
-                history.scrollRestoration = 'manual';
-            window.scrollTo(0,0);
-            that.$emit('disablePageScrolling');
+            this.scrollTo(0 ,function(){
+                that.$emit('disablePageScrolling');
             
-            this.showMeDetail = false;
+                that.showMeDetail = false;
 
-            let content =  that.$el.querySelector('.container');
-            content.classList.remove('inverted-color');
-            let textBoxInternal = that.$el.querySelector('.text-box-internal');
-            textBoxInternal.classList.remove('add-padding-left');
+                let content =  that.$el.querySelector('.container');
+                content.classList.remove('inverted-color');
+                let textBoxInternal = that.$el.querySelector('.text-box-internal');
+                textBoxInternal.classList.remove('add-padding-left');
 
-            that.buttonText = "Tell Me More";
+                that.buttonText = "Tell Me More";
 
-            let button = content.querySelector('button');
-            button.classList.remove("color-inverted");
-            
-            that.imageInvertColor = false;
-
-            setTimeout(function(){
-                content.style.maxHeight = "100%";
+                let button = content.querySelector('button');
+                button.classList.remove("color-inverted");
+                
+                that.imageInvertColor = false;
 
                 setTimeout(function(){
-                    that.$emit('showScrollIndicator');
-                },2000)
-            }, 2000);
+                    content.style.maxHeight = "100%";
+
+                    setTimeout(function(){
+                        that.$emit('showScrollIndicator');
+                    },2000)
+                }, 2000);
+            }); 
+
+
+            
         }
     },
     mounted(){

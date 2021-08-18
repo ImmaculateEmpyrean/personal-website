@@ -71,7 +71,7 @@
                             <div class="columns">
                                 <div class="column is-three-quarters"></div>
                                 <div class="column is-half">
-                                    <button class="msg-leave button is-dark">Leave Me A Message</button>
+                                    <button @click="sendToContactPage" class="msg-leave button is-dark">Leave Me A Message</button>
                                 </div>
                             </div>
                         </div>
@@ -226,7 +226,7 @@
                             <div class="columns">
                                 <div class="column is-three-quarters"></div>
                                 <div class="column is-half">
-                                    <button class="msg-leave button is-black">Leave Me A Message</button>
+                                    <button @click="sendToContactPage" class="msg-leave button is-black">Leave Me A Message</button>
                                 </div>
                             </div>
                         </div>
@@ -311,7 +311,12 @@
 export default {
     methods:{
         sendToContactPage(){
-            
+            let that = this;
+            this.$emit('hide-MeDetail');
+
+            setTimeout(function(){
+                that.$router.push('/LeaveMessageHere');
+            },8000);
         }
     }
 }
