@@ -243,6 +243,8 @@
 </template>
 
 <script>
+import JsFileDownloader from 'js-file-downloader';
+
 export default {
 	name: "PortfolioDetail",
 	methods:{
@@ -253,14 +255,13 @@ export default {
 			this.$router.push("/LeaveMessageHere");
 		},
 		async downloadResume(){
-			const axios = require('axios').default;
-			try{
-				let res = await axios.get('/download-resume');
-				console.log(res);
-			}
-			catch(error){
-				console.log('error ocurred contacting the server..')
-			}
+			new JsFileDownloader({ 
+    			url: '/download-resume'
+  			}).then(function(){
+				  console.log('download done ?')
+			}).catch(function(error){
+				console.log(error);
+			});
 		}
 	}
 }
