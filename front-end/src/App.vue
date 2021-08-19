@@ -1,7 +1,10 @@
 <template>
     <div class="page">
       <MainMenu ref="MainMenu" @menuButtonClicked="menuButtonClicked" />
-      <Navbar   ref="Navbar"   @hamburgerButtonClicked="hamburgerButtonClicked" />
+      <Navbar   ref="Navbar"   
+        @hamburgerButtonClicked="hamburgerButtonClicked" 
+        @setTransitionZoom="setTransitionZoom"
+      />
       <div class="router-content">
         <ScrollIndicator ref="ScrollIndicator"/>
         <router-view v-slot="{ Component }">
