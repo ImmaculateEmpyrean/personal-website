@@ -21,6 +21,9 @@ execSync('npm run build',{
    cwd: path.join(__dirname,'back-end'),
    stdio: 'inherit' 
 });
-fs.copySync(path.join(__dirname,'back-end/dist'),path.join(__dirname,'dist'));
+fs.copySync(path.join(__dirname,'back-end/dist/server.js'),path.join(__dirname,'dist/server.js'));
+fs.copySync(path.join(__dirname,'back-end/dist/package.json'),path.join(__dirname,'dist/package.json'));
+fs.copySync(path.join(__dirname,'back-end/dist/package-lock.json'),path.join(__dirname,'dist/package-lock.json'));
+fs.copySync(path.join(__dirname,'back-end/dist/docs'),path.join(__dirname,'dist/www/docs/'));
 console.log('finished building the back-end');
 //ended building the back-end

@@ -41,7 +41,7 @@ app.get('/LeaveMessageHere',function(req,res){
 
 
 app.get('/download-resume', function(req, res){
-	const file = `${__dirname}/www/docs/resume.pdf`;
+	const file = `${__dirname}/www/docs/resume-veeru.pdf`;
 	res.download(file);
 });
 

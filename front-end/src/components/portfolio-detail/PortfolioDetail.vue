@@ -255,7 +255,8 @@ export default {
 		async downloadResume(){
 			const axios = require('axios').default;
 			try{
-				await axios.get('/download-resume');
+				let res = await axios.get('/download-resume');
+				console.log(res);
 			}
 			catch(error){
 				console.log('error ocurred contacting the server..')
