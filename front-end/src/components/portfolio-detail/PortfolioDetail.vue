@@ -66,10 +66,10 @@
 								</div>
 								<br />
 								<div class="buttons has-addons is-centered">
-									<a href="#" class="button is-link mr-1">Github</a>
-									<a href="#" class="button is-link mr-1">LinkedIn</a>
-									<a href="#" class="button is-link mr-1">Discord</a>
-									<a href="#" class="button is-link mr-1">Email</a>
+									<a href="https://github.com/ImmaculateEmpyrean" class="button is-link mr-1">Github</a>
+									<a href="https://www.linkedin.com/in/veeru-empyrean-9987b921a/" class="button is-link mr-1">LinkedIn</a>
+									<a href="https://discordapp.com/users/empyrean#4242/" class="button is-link mr-1">Discord</a>
+									<a href="#" class="button is-link mr-1" @click="routeToLeaveMessageHerePage" >Email</a>
 								</div>
 							</div>
 						</div>
@@ -227,7 +227,7 @@
 				<div class="section-heading">
 					<h3 class="title is-2">Resume</h3>
 					<h4 class="subtitle is-5">More about my past.</h4>
-					<a href="#" class="button is-link is-medium">
+					<a href="#" @click="downloadResume" class="button is-link is-medium">
 						<span class="icon">
 							<i class="fas fa-file-alt"></i>
 						</span>
@@ -241,6 +241,31 @@
 		</div>
 	</div>
 </template>
+
+<script>
+export default {
+	name: "PortfolioDetail",
+	methods:{
+		routeToLeaveMessageHerePage(e){
+			e.preventDefault();
+
+			this.$emit("setTransitionZoom");
+			this.$router.push("/LeaveMessageHere");
+		},
+		async downloadResume(){
+			const axios = require('axios').default;
+			try{
+				await axios.get('/download-resume');
+			}
+			catch(error){
+				console.log('error ocurred contacting the server..')
+			}
+			
+		}
+	}
+}
+</script>
+
 
 <style lang="scss" scoped>
 //customizing bulma

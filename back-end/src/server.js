@@ -40,6 +40,12 @@ app.get('/LeaveMessageHere',function(req,res){
 });
 
 
+app.get('/download-resume', function(req, res){
+	const file = `${__dirname}/www/docs/resume.pdf`;
+	res.download(file);
+});
+
+
 //leave-message-here
 app.post("/leaveMessageHere", async function (req, res) {
 	//get all the information passed to me
