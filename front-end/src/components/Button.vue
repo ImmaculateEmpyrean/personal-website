@@ -1,6 +1,6 @@
 <template>
-    <button @click="$emit('buttonClicked')" v-show="showButton"
-            class="animate__animated" ref="button">
+    <button @click="$emit('buttonClicked')" v-show="showButtonInternal"
+            :class="'animate__animated '+buttonName" ref="button">
             {{buttonTextInternal}}
     </button>    
 </template>
@@ -15,11 +15,16 @@ export default {
         showButton:{
             type: Boolean,
             default: false
+        },
+        buttonName:{
+            type: String,
+            default: "NoCLASS"
         }
     },
     data (){
         return {
-            buttonTextInternal: "Tell Me More"
+            buttonTextInternal: "Tell Me More",
+            showButtonInternal: false
         }
     },
     watch: { 
@@ -38,10 +43,30 @@ export default {
             setTimeout(function(){
                 button.classList.remove('animate__fadeIn');
             },4000)
+        },
+        showButton: function(){
+            let that = this;
+            let button = this.$refs.button;
+
+            if(this.showButton === false){
+                button.classList.add('animate__fadeOutLeft');
+                setTimeout(function(){
+                    button.classList.remove('animate__fadeOutLeft');
+                    that.showButtonInternal = false;
+                },2000);
+            } 
+            else if(this.showButton === true) {
+                this.showButtonInternal = true;
+                button.classList.add('animate__fadeInLeft');
+                setTimeout(function(){
+                    button.classList.remove('animate__fadeInLeft');
+                },2000)
+            }
         }
     },
     mounted(){
         this.buttonTextInternal = this.buttonText;
+        this.showButtonInternal = this.showButton;
     }
 }
 </script>
@@ -56,7 +81,7 @@ export default {
         padding: 1.8vh 4vh;
         border: 5px solid black;
 
-        margin-left: auto;
+        //margin-left: auto;
         margin-right: 14px;
         font-size: 20px;
 

@@ -2,9 +2,10 @@
     <div class="container">
         <MainTextDisplay 
         @buttonClicked="$emit('buttonClicked')"
+        @buttonClickedAux="$emit('buttonClickedAux')"
         :heading1="heading1" :heading2="heading2" :caption="caption" :description="description"
-        :showCaption="showCaption" :showButton="showButton"
-        :buttonText="buttonText" />
+        :showCaption="showCaption" :showButton="showButton" :showButtonAux="showButtonAux"
+        :buttonText="buttonText" :buttonTextAux="buttonTextAux" />
 
         <MainImageDisplay :imagePath="imagePath" :imagePosition="imagePosition" :imageInvertColor="imageInvertColor"/>
     </div>
@@ -47,7 +48,15 @@ export default {
             type: Boolean,
             default: false
         },
+        showButtonAux:{
+            type: Boolean,
+            default: false
+        },
         buttonText:{
+            type: String,
+            default: "Tell Me More"
+        },
+        buttonTextAux:{
             type: String,
             default: "Tell Me More"
         },

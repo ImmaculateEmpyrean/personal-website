@@ -8,7 +8,10 @@
             </h1>
             <img src="@/assets/logo-line.svg" alt="logo-line" width = "250">
             <p>{{description}}</p>
-            <Button :buttonText="buttonText" :showButton="showButton" @buttonClicked="$emit('buttonClicked')"/>
+            <div class="button-holder">
+                <Button buttonName="auxButton"  :buttonText="buttonTextAux" :showButton="showButtonAux"  @buttonClicked="$emit('buttonClickedAux')"/>
+                <Button buttonName="mainButton" :buttonText="buttonText"    :showButton="showButton"    @buttonClicked="$emit('buttonClicked')"/>
+            </div>
         </div>
     </div>
 </template>
@@ -43,9 +46,17 @@ export default {
             type: Boolean,
             default: false
         },
+        showButtonAux:{
+            type: Boolean,
+            default: false
+        },
         buttonText:{
             type: String,
             default: "Tell Me More"
+        },
+        buttonTextAux:{
+            type: String,
+            default: "Auxillary Button"
         }
     },
 
@@ -98,5 +109,10 @@ export default {
             margin-top:    $spacing-normal;
             margin-bottom: $spacing-normal;
         }
+    }
+
+    .button-holder{
+        display: flex;
+        justify-content: flex-end;
     }
 </style>

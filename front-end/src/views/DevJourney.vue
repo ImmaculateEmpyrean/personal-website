@@ -1,8 +1,10 @@
 <template>
 <div class="dev-container">
-    <Content :heading1="heading1" :heading2="heading2" :caption="caption" :description="description" :buttonText="buttonText"
-             :showCaption="showCaption" :showButton="showButton" :imagePath="imagePath" :imagePosition="'left'" :imageInvertColor="imageInvertColor"
-             @wheel="wheelEvent" v-touch:swipe.top="swipeUp" v-touch:swipe.bottom="swipeDown" @buttonClicked="processDevDetail" />
+    <Content :heading1="heading1" :heading2="heading2" :caption="caption" :description="description" 
+             :showCaption="showCaption" :imagePath="imagePath" :imagePosition="'left'" :imageInvertColor="imageInvertColor"
+             :buttonText="buttonText" :buttonTextAux="buttonTextAux"
+             :showButton="showButton" :showButtonAux="showButtonAux"
+             @wheel="wheelEvent" v-touch:swipe.top="swipeUp" v-touch:swipe.bottom="swipeDown" @buttonClicked="processDevDetail" @buttonClickedAux="downloadResume"/>
     <div class="dev-detail-container">
         <transition 
             name="routerTransition"
@@ -10,7 +12,7 @@
             :leave-active-class="'animate__animated animate__fadeOutDown'"
             mode="out-in"
         >
-            <PortfolioDetail v-show="showDevDetail" 
+            <PortfolioDetail v-show="showDevDetail" ref="portDet"
                         @enablePageScrolling="$emit('enablePageScrolling')" 
                         @disablePageScrolling="$emit('disablePageScrolling')"
                         @setTransitionZoom="$emit('setTransitionZoom')"
@@ -48,7 +50,9 @@ export default {
                         also with a strong foray into the land of \
                         embeded programming and databases.",
             showButton: true,
+            showButtonAux: false,
             buttonText: "Tell Me More",
+            buttonTextAux: "Download My Resume",
             imagePath: require("@/assets/dev-journey.png"),
 
             next: "Me",
@@ -59,6 +63,10 @@ export default {
         }
     },
     methods:{
+        downloadResume(){
+            //i have already created a download the resume here
+            this.$refs.portDet.downloadResume(); 
+        },
         scrollTo(offset, callback) {
             const fixedOffset = offset.toFixed();
             const onScroll = function () {
@@ -117,10 +125,13 @@ export default {
                 let content =  that.$el.querySelector('.container');
                 content.classList.add('inverted-color');
 
-                that.buttonText = "Tell Me Less";
-                let button = content.querySelector('button');
-                button.classList.add("color-inverted");
+                that.buttonText = "Tell Me Less";                
                 
+                let mainButton = content.querySelector('.mainButton');
+                let auxButton = content.querySelector('.auxButton');
+                mainButton.classList.add("color-inverted");
+                auxButton .classList.add("color-inverted");
+
                 that.imageInvertColor = true;
 
                 let textBoxInternal = document.querySelector('.text-box-internal')
@@ -133,7 +144,7 @@ export default {
 
             setTimeout(function(){
                 that.showDevDetail = true;
-
+                that.showButtonAux = true;
                 setTimeout(function(){
                     that.$emit('enablePageScrolling');
                 },2000);
@@ -153,9 +164,13 @@ export default {
                 textBoxInternal.classList.remove('add-padding-left');
 
                 that.buttonText = "Tell Me More";
+                that.showButtonAux = false;
 
-                let button = content.querySelector('button');
-                button.classList.remove("color-inverted");
+                let mainButton = content.querySelector('.mainButton');
+                let auxButton = content.querySelector('.auxButton');
+
+                mainButton.classList.remove("color-inverted");
+                auxButton.classList.remove("color-inverted");
                 
                 that.imageInvertColor = false;
 
