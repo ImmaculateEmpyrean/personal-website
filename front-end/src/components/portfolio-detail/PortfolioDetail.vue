@@ -260,7 +260,6 @@ export default {
 			catch(error){
 				console.log('error ocurred contacting the server..')
 			}
-			
 		}
 	}
 }
