@@ -5,15 +5,15 @@
         <div class="picture-placeholder" v-show="onlyTablet"></div>
         <ul>
             <li>I recieve mail : <strong>Empyrean@veeru.me</strong></li>
-            <li>I am on Discord:
+            <li @click="navigateToDiscord">I am on Discord:
                 <span class="discord-id">
                     <img src= "@/assets/discord-profile-picture.png">
                     <strong>Empyrean#4242</strong>
                 </span>
             </li>
-            <li><a href="https://github.com/ImmaculateEmpyrean">Have a Github preference?</a></li>
-            <li><a href="#">My LinkedIn page</a></li>
-            <li><router-link @click="navigateToLeaveMessageHere" to=""><strong>Leave a message here on this site</strong></router-link></li>
+            <li @click="navigateToGithub">  <a href="#">Have a Github preference?</a></li>
+            <li @click="navigateToLinkedIn"><a href="#">My LinkedIn page</a></li>
+            <li @click="navigateToLeaveMessageHere" ><router-link to=""><strong>Leave a message here on this site</strong></router-link></li>
         </ul>
     </div>
 </template>
@@ -49,7 +49,16 @@ export default {
         async navigateToLeaveMessageHere(){
             await this.$emit("setTransitionZoom");
             this.$router.push('/LeaveMessageHere');
-        }
+        },
+        async navigateToLinkedIn(){
+            window.location.href = "https://www.linkedin.com/in/veeru-empyrean-9987b921a/";
+        },
+        async navigateToGithub(){
+            window.location.href = "https://github.com/ImmaculateEmpyrean";
+        },
+        async navigateToDiscord(){
+            window.location.href = "https://discordapp.com/users/empyrean#4242/";
+        },
     }
 }
 
