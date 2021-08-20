@@ -488,11 +488,11 @@ export default {
                 message: this.$el.querySelector('#messageField').value,
             }
             
+            this.$emit("setTransitionZoom");
             this.$router.push('/LoadingScreen');
 
             const axios = require('axios').default;
             axios.post('/leaveMessageHere',messageDetails).then(function(res){
-                // that.$router.push('/ThankYou');
                 that.$router.push({
                     name: 'ThankYou',
                     params: { name: messageDetails.name }
