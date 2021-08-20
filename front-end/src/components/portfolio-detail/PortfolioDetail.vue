@@ -192,8 +192,7 @@
 							<div class="box" style="min-height: 100%">
 								<div class="content">
 									<h4 class="title is-5">Back End Web Development</h4>
-									Develop Back End application/service using Node.js or ASP .NET
-									and SQL server or Mongo DB databases.
+									I primarily develop Back End applications using Node.js and express or ASP.NET, The sky is really the limit here as I have excellent augmentations like postgress and Mongo DB databases in my arsenal.
 								</div>
 							</div>
 						</div>
@@ -204,8 +203,7 @@
 							<div class="box" style="min-height: 100%">
 								<div class="content">
 									<h4 class="title is-5">Video Game Development</h4>
-									Develop Video Games using latest technologies like godot or
-									unreal engine.
+									Being fairly well versed in godot 3 puts me in a good position to move into game development at will and I intend to make full use of this position in your service. 
 								</div>
 							</div>
 						</div>
@@ -215,6 +213,25 @@
 									<h4 class="title is-5">Wordpress Development</h4>
 									Any of my plugins pique your intrest? Or would you rather hire
 									me to develop a wordpress site for you.
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="columns">
+						<div class="column">
+							<div class="box" style="min-height: 100%">
+								<div class="content">
+									<h4 class="title is-5">Server Administration</h4>
+									I maintain my own debian based server and am quite adept at doing that. I can do it for you too if you hire me!
+								</div>
+							</div>
+						</div>
+						<div class="column">
+							<div class="box" style="min-height: 100%">
+								<div class="content">
+									<h4 class="title is-5">Database Designer</h4>
+									Being well versed in the song that is Database (relational databases), I can help you either overhaul an existing system or design and implement entirely new ones to support your backEnd. 
 								</div>
 							</div>
 						</div>
