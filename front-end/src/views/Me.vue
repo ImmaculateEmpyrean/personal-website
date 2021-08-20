@@ -115,7 +115,7 @@ export default {
 
                 that.buttonText = "Tell Me Less";
                 
-                let button = content.querySelector('mainButton');
+                let button = content.querySelector('.mainButton');
                 button.classList.add("color-inverted");
                 
                 that.imageInvertColor = true;
@@ -149,7 +149,7 @@ export default {
 
                 that.buttonText = "Tell Me More";
 
-                let button = content.querySelector('mainButton');
+                let button = content.querySelector('.mainButton');
                 button.classList.remove("color-inverted");
                 
                 that.imageInvertColor = false;
