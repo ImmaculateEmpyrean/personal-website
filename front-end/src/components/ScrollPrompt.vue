@@ -1,6 +1,6 @@
 <template>
     <div :v-show="atleastTablet" class="ScrollPrompt">
-        <h3>SCROLLDOWN</h3>
+        <h3></h3>
         <img src="../assets/scroll-prompt.svg" alt="scroll-down">
     </div>
 </template>
@@ -15,6 +15,20 @@ export default {
         return true;
       else return false;  
     }
+  },
+  mounted(){
+    let textField = this.$el.querySelector('h3');
+    let Typewriter = require('typewriter-effect/dist/core');
+
+    let typewriter = new Typewriter(textField, {
+      loop: false,
+    });
+
+    typewriter
+      .changeCursor(" ")
+      .pauseFor(1500)
+      .typeString('SCROLLDOWN')
+      .start();
   }  
 }
 </script>
