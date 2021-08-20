@@ -374,6 +374,20 @@ export default {
         }
     },
     methods:{
+        checkOverflow(el)
+        {
+            let curOverflow = el.style.overflow;
+
+            if ( !curOverflow || curOverflow === "visible" )
+                el.style.overflow = "hidden";
+
+            let isOverflowing = el.clientWidth < el.scrollWidth 
+                || el.clientHeight < el.scrollHeight;
+
+            el.style.overflow = curOverflow;
+
+            return isOverflowing;
+        },
         async cancelClicked(){
             await this.$emit('setTransitionZoom');
             this.$router.push('/ContactMe');
@@ -494,6 +508,10 @@ export default {
             showScrollIndicator: false,
             pageNumber: null
         });
+
+        if(this.checkOverflow(this.$el)){
+            this.$emit('enablePageScrolling');
+        }
     },
 }
 </script>

@@ -84,6 +84,8 @@ export default {
         if(obj.showScrollIndicator === true){
             this.$refs.ScrollIndicator.show();
             this.$refs.ScrollIndicator.setCurrentPage(obj.pageNumber);
+
+            this.disablePageScrolling();
         }
         else{
             this.$refs.ScrollIndicator.hide();
