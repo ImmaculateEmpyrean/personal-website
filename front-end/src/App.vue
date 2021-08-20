@@ -101,14 +101,18 @@ export default {
     },
 
     disablePageScrolling(){
-        let page = document.querySelector('#app > .page');
-        page.style.height = `${window.innerHeight}px`; //this is done so as to allow the calculation of height in phones excluding the url bar   
-        page.style.overflowY = "hidden";
+      let htmlElement = document.querySelector('html');
+      let page = document.querySelector('#app > .page');
+
+      htmlElement.style.overflow = "hidden";
+      page.style.height = `${window.innerHeight}px`;
     },
     enablePageScrolling(){
-        let page = document.querySelector('#app > .page');
-        page.style.height = "auto";
-        page.style.overflowY = "auto";
+      let htmlElement = document.querySelector('html');
+      let page = document.querySelector('#app > .page');
+
+      htmlElement.style.overflow = "auto";
+      page.style.height = "auto";
     },
     hideScrollIndicator(){
       this.$refs.ScrollIndicator.hide();
@@ -119,19 +123,15 @@ export default {
 
   },
   mounted(){
-    console.log('mounted app');
-
-    let fixedHeightPage = this.$refs.ScrollIndicator.showScrollBar;
-    document.addEventListener('resize',function(){
-      if(fixedHeightPage === true ) this.disablePageScrolling();
-      else this.enablePageScrolling();
-    })
-
-    //the home page as I know is not scrollable by normal means
+    let htmlElement = document.querySelector('html');
     let page = document.querySelector('#app > .page');
-    page.style.height = `${window.innerHeight}px`; //this is done so as to allow the calculation of height in phones excluding the url bar
-    page.style.overflowX = "hidden";
-    page.style.overflowY = "hidden";
+    if(this.$refs.ScrollIndicator.showScrollBar === true){
+      htmlElement.style.overflow = "hidden";
+      page.style.height = `${window.innerHeight}px`;
+    } else {
+      htmlElement.style.overflow = "auto";
+      page.style.height = `auto`;
+    }
   }
 }
 </script>
@@ -167,6 +167,7 @@ export default {
   .page{
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   }
 
   .router-content{
