@@ -1,5 +1,14 @@
 <template>
     <div class="page">
+      <transition 
+        name="scrollPromptTransition"
+        enter-active-class="animate__animated animate__fadeInUp"
+        leave-active-class="animate__animated animate__fadeOutDown"
+        mode="out-in"
+      >
+        <ScrollPrompt v-show="isHomePage"/>
+      </transition>
+
       <MainMenu ref="MainMenu" @menuButtonClicked="menuButtonClicked" />
       <Navbar   ref="Navbar"   
         @hamburgerButtonClicked="hamburgerButtonClicked" 
@@ -24,6 +33,7 @@
                 @hideScrollIndicator="hideScrollIndicator" @showScrollIndicator="showScrollIndicator"
 
                 @enableProcessWheel="processWheel=true" @disableProcessWheel="processWheel=false"
+                @isHomePage="isHomePage = true" @isNotHomePage="isHomePage = false"
               ></component>
           </transition>
         </router-view>
@@ -36,6 +46,7 @@
 import Navbar from '@/components/Navbar.vue';
 import MainMenu from '@/components/MainMenu.vue';
 import ScrollIndicator from '@/components/ScrollIndicator.vue';
+import ScrollPrompt from '@/components/ScrollPrompt.vue';
 import Content from '@/components/Content.vue';
 
 export default {
@@ -43,6 +54,7 @@ export default {
   components: {
     Navbar,
     ScrollIndicator,
+    ScrollPrompt,
     Content,
     MainMenu
   },
@@ -51,7 +63,8 @@ export default {
       pageEnterAnimation: "animate__animated animate__backInDown",
       pageLeaveAnimation: "animate__animated animate__backOutDown",
       testVar: true,
-      processWheel: true
+      processWheel: true,
+      isHomePage: false
     }
   },
   methods:{
@@ -143,7 +156,6 @@ export default {
 
   body{
       font-family: 'Futura', sans-serif;
-      //overflow: hidden;
   }
 
   //these variables are used to setup the animate.css framework defaults.. removing these MAY CAUSE DANGEROUS UNFORSEEN PROBLEMS AS IT WILL LIKELY BREAK A SERIES OF SETTIMEOUTS SOMEWHERE
@@ -155,7 +167,6 @@ export default {
   .page{
     display: flex;
     flex-direction: column;
-    //height: 100vh;
   }
 
   .router-content{

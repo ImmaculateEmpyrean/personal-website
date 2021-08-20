@@ -58,6 +58,14 @@ export default {
         showScrollIndicator: true,
         pageNumber: 1
     });
+    
+    let that = this;
+    setTimeout(function(){
+      that.$emit('isHomePage');
+    },2000)
   },
+   beforeUnmount(){
+    this.$emit('isNotHomePage');
+  }
 }
 </script>
