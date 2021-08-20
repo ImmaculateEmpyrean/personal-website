@@ -393,9 +393,6 @@ export default {
             this.$router.push('/ContactMe');
         },
         submitValidation(){
-            console.log('talked yes check : ',this.$el.querySelector('#talkedYesCheck').checked)
-            console.log('talked no check : ',this.$el.querySelector('#talkedNoCheck').checked);
-
             let errorFlag = false;
 
             //step-1 check if the name is given
@@ -490,13 +487,16 @@ export default {
                 subject: this.$el.querySelector('#subjectField').value,
                 message: this.$el.querySelector('#messageField').value,
             }
-            console.log(messageDetails);
+            
             this.$router.push('/LoadingScreen');
 
             const axios = require('axios').default;
             axios.post('/leaveMessageHere',messageDetails).then(function(res){
-                console.log('response recieved');
-                that.$router.push('/ThankYou');
+                // that.$router.push('/ThankYou');
+                that.$router.push({
+                    name: 'ThankYou',
+                    params: { name: messageDetails.name }
+                });
             }).catch(function(error){
                 alert('message could not be posted due to some issue..');
                 that.$router.push('/LeaveMessageHere');

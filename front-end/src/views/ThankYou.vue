@@ -34,6 +34,7 @@ export default {
         }
     },
     async mounted(){
+        console.log(this.$route.params);
         this.$emit('updateScrollIndicator',{
             showScrollIndicator: false,
             pageNumber: null
@@ -61,7 +62,7 @@ export default {
 
         await typewriterOne
                 .typeString(`I am very grateful that you have chosen to leave a message here\
-                                           dear ${this.personName}. The next time you hear from me will be in person
+                                           dear ${this.$route.params.name}. The next time you hear from me will be in person
                                            after I finish reviewing the contents of the message you left me.`)
                 .start();
 
@@ -111,6 +112,7 @@ export default {
     #okay-button{
         display: flex;
         margin-right: 14px;
+        margin-left: auto;
     }
 
     .paragraph{
