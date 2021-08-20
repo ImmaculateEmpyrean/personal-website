@@ -61,7 +61,7 @@ export default {
             default: "Tell Me More"
         },
         imagePath:{
-            default: require("@/assets/sharpended-home-image.png")
+            default: require("@/assets/home.png")
         },
         imagePosition:{
             type: String,
