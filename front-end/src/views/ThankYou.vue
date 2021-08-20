@@ -18,27 +18,29 @@ import Button from '@/components/Button.vue';
 
 export default {
     name: "ThankYou",
-    props:{
-        personName: {
-            type: String,
-            default: "!!NoName!!"
+    computed:{
+        personName(){
+            return this.$route.params.name;
         }
     },
     components:{
         Button
     },
     methods:{
+
         processOkay(){
             this.$emit('setTransitionZoom');
             this.$router.push('/ContactMe');
         }
     },
     async mounted(){
-        console.log(this.$route.params);
+        
         this.$emit('updateScrollIndicator',{
             showScrollIndicator: false,
             pageNumber: null
         });
+
+        this.$emit('enablePageScrolling');
 
         let paraOne     = this.$el.querySelector('#paragraph-1');
         let paraTwo     = this.$el.querySelector('#paragraph-2');
