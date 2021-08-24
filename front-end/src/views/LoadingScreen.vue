@@ -19,6 +19,9 @@
 export default {
     name: "LoadingScreen",
     mounted(){
+        //this page cannot be scrolled
+        this.$emit('disablePageScrolling');
+  
         this.$emit('updateScrollIndicator',{
             showScrollIndicator: false,
             pageNumber: null

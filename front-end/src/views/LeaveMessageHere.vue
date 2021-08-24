@@ -504,6 +504,9 @@ export default {
         }
     },
     mounted(){
+        //this page cannot be scrolled by default
+        this.$emit('disablePageScrolling');
+
         this.$emit('updateScrollIndicator',{
             showScrollIndicator: false,
             pageNumber: null

@@ -188,6 +188,9 @@ export default {
         }
     },
     mounted(){
+        //this page cannot be scrolled
+        this.$emit('disablePageScrolling');
+
         this.$emit('updateScrollIndicator',{
             showScrollIndicator: true,
             pageNumber: 2

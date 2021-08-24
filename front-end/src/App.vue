@@ -15,7 +15,7 @@
         @setTransitionZoom="setTransitionZoom"
       />
       <div class="router-content">
-        <ScrollIndicator ref="ScrollIndicator"/>
+        <ScrollIndicator v-if="atleastTablet" ref="ScrollIndicator"/>
         <router-view v-slot="{ Component }">
           <transition 
             name="routerTransition"
@@ -67,6 +67,13 @@ export default {
       isHomePage: false
     }
   },
+  computed:{
+    atleastTablet: function(){
+      if(window.innerWidth >= 768)
+        return true;
+      else return false;
+    }
+  },
   methods:{
     renderPreviousView(){
         this.pageEnterAnimation = "animate__animated animate__backInDown";
@@ -81,15 +88,17 @@ export default {
         this.pageLeaveAnimation = "animate__animated animate__zoomOut";
     },
     updateScrollIndicator(obj){
+      if(this.$refs.ScrollIndicator != null){
         if(obj.showScrollIndicator === true){
-            this.$refs.ScrollIndicator.show();
-            this.$refs.ScrollIndicator.setCurrentPage(obj.pageNumber);
+          this.$refs.ScrollIndicator.show();
+          this.$refs.ScrollIndicator.setCurrentPage(obj.pageNumber);
 
-            this.disablePageScrolling();
+          this.disablePageScrolling();
         }
         else{
             this.$refs.ScrollIndicator.hide();
         }
+      }
     },
     hamburgerButtonClicked(){
         this.$refs.MainMenu.$el.classList.toggle('hidden');
@@ -117,24 +126,17 @@ export default {
       page.style.height = "auto";
     },
     hideScrollIndicator(){
-      this.$refs.ScrollIndicator.hide();
+      if(this.$refs.ScrollIndicator != null){
+        this.$refs.ScrollIndicator.hide();
+      }
     },
     showScrollIndicator(){
-      this.$refs.ScrollIndicator.show();
+      if(this.$refs.ScrollIndicator != null){
+        this.$refs.ScrollIndicator.show();
+      }
     }
 
   },
-  mounted(){
-    let htmlElement = document.querySelector('html');
-    let page = document.querySelector('#app > .page');
-    if(this.$refs.ScrollIndicator.showScrollBar === true){
-      htmlElement.style.overflow = "hidden";
-      page.style.height = `${window.innerHeight}px`;
-    } else {
-      htmlElement.style.overflow = "auto";
-      page.style.height = `auto`;
-    }
-  }
 }
 </script>
 
