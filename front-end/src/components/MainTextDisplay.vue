@@ -86,7 +86,9 @@ export default {
         flex-direction: column;
 
         &.add-padding-left{
-            padding-left: $spacing-large;
+            @include atleast-desktop{
+                padding-left: $spacing-large;
+            }
         }
     }
 
