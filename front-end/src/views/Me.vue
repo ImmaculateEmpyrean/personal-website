@@ -46,7 +46,8 @@ export default {
             previous: "DevJourney",
 
             showMeDetail: false,
-            imageInvertColor: false
+            imageInvertColor: false,
+            transitioning: false
         }
     },
     computed: {
@@ -104,14 +105,17 @@ export default {
         },
 
         processMeDetail() {
-            if(this.showMeDetail === false)
-                this.showMeDetailWindow();
-            else
-                this.hideMeDetailWindow();
+            if(this.transitioning === false){
+                if(this.showMeDetail === false)
+                    this.showMeDetailWindow();
+                else
+                    this.hideMeDetailWindow();
+            }
         },
 
         showMeDetailWindow(){
             let that = this;
+            this.transitioning = true;
             this.$emit('disableProcessWheel');
             this.$emit('hideScrollIndicator');
 
@@ -142,16 +146,19 @@ export default {
                 internalShowMeDetail();
                 setTimeout(function(){
                     internalShowMeDetailDone();
+                    that.transitioning = false;
                 },2000);
             } else {
                 setTimeout(internalShowMeDetail,2000);
                 setTimeout(function(){
                     internalShowMeDetailDone();
+                    that.transitioning = false;
                 },4000);
             }
         },
         hideMeDetailWindow(){
             let that = this;
+            this.transitioning = true;
 
             this.scrollTo(0 ,function(){
                 that.$emit('disablePageScrolling');
@@ -176,7 +183,7 @@ export default {
                     setTimeout(function(){
                         that.$emit('showScrollIndicator');
                         that.$emit('enableProcessWheel');
-
+                        that.transitioning = false;
                     },2000)
                 }, 2000);
             });

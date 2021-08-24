@@ -59,7 +59,14 @@ export default {
             previous: "/",
 
             showDevDetail: false,
-            imageInvertColor: false
+            imageInvertColor: false,
+            transitioning: false
+        }
+    },
+    computed: {
+        isMobile: function(){
+            if(window.innerWidth < 768) return true;
+            else return false;
         }
     },
     methods:{
@@ -110,18 +117,22 @@ export default {
 
 
         processDevDetail() {
-            if(this.showDevDetail == false)
-                this.showDevDetailWindow();
-            else
-                this.hideDevDetailWindow();
+            if(this.transitioning === false){
+                if(this.showDevDetail == false)
+                    this.showDevDetailWindow();
+                else
+                    this.hideDevDetailWindow();
+            }
         },
 
         showDevDetailWindow(){
             let that = this;
-            this.$emit('disableProcessWheel');
+            this.transitioning = true;
 
+            this.$emit('disableProcessWheel');
             this.$emit('hideScrollIndicator');
-            setTimeout(function(){
+
+            let showDevDetailInternal = function(){
                 let content =  that.$el.querySelector('.container');
                 content.classList.add('inverted-color');
 
@@ -140,18 +151,34 @@ export default {
                 content.style.minHeight = textBoxInternalStyle.height;
 
                 textBoxInternal.classList.add('add-padding-left');
-            },2000)
-
-            setTimeout(function(){
+            }
+            
+            let showDevDetailInternalAfter = function(){
                 that.showDevDetail = true;
                 that.showButtonAux = true;
                 setTimeout(function(){
                     that.$emit('enablePageScrolling');
+                    that.transitioning = false;
                 },2000);
-            },4000);
+            }
+
+            if(this.isMobile){
+                showDevDetailInternal();
+                setTimeout(function(){
+                    showDevDetailInternalAfter();
+                },2000)
+            } else{
+                setTimeout(function(){
+                    showDevDetailInternal();
+                    setTimeout(function(){
+                        showDevDetailInternalAfter();
+                    },2000)
+                },2000)
+            }
         },
         hideDevDetailWindow(){
             let that = this;
+            this.transitioning = true;
 
             this.scrollTo(0 ,function(){
                 that.$emit('disablePageScrolling');
@@ -181,7 +208,7 @@ export default {
                     setTimeout(function(){
                         that.$emit('showScrollIndicator');
                         that.$emit('enableProcessWheel');
-
+                        that.transitioning = false;
                     },2000)
                 }, 2000);
             });
