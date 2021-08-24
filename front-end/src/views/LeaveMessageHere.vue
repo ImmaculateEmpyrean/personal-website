@@ -326,35 +326,35 @@
                 </div>
             </div>
 
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label">Message</label>
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <div class="control">
-                        <textarea class="textarea" placeholder="Please Enter Your Message Here.." id="messageField"></textarea>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Message</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <textarea class="textarea" placeholder="Please Enter Your Message Here.." id="messageField"></textarea>
+                        </div>
+                        <p class="has-text-danger" v-show="messageFieldWarning">the message cannot be empty.</p>
                     </div>
-                    <p class="has-text-danger" v-show="messageFieldWarning">the message cannot be empty.</p>
                 </div>
             </div>
-        </div>
 
-        <div class="field is-horizontal">
-            <div class="field-label">
-                <!-- Left empty for spacing -->
-            </div>
-            <div class="field-body">
-                <div class="field is-horizontal">
-                    <div class="control">
-                        <button class="button" id="submitButton" @click="submitValidation">Send Message</button>
-                    </div>
-                    <div class="control">
-                        <button class="button is-warning" id="cancelButton" @click="cancelClicked">Cancel</button>
+            <div class="field is-horizontal">
+                <div class="field-label">
+                    <!-- Left empty for spacing -->
+                </div>
+                <div class="field-body">
+                    <div class="field is-horizontal">
+                        <div class="control">
+                            <button class="button" id="submitButton" @click="submitValidation">Send Message</button>
+                        </div>
+                        <div class="control">
+                            <button class="button is-warning" id="cancelButton" @click="cancelClicked">Cancel</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
     </div>
 
@@ -374,7 +374,7 @@ export default {
         }
     },
     methods:{
-        checkOverflow(el)
+        checkOverflowHeight(el)
         {
             let curOverflow = el.style.overflow;
 
@@ -508,8 +508,7 @@ export default {
             showScrollIndicator: false,
             pageNumber: null
         });
-
-        if(this.checkOverflow(this.$el)){
+        if(this.checkOverflowHeight(document.querySelector(".page"))){
             this.$emit('enablePageScrolling');
         }
     },

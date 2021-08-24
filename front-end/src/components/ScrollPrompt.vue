@@ -1,5 +1,5 @@
 <template>
-    <div :v-show="atleastTablet" class="ScrollPrompt">
+    <div v-if="atleastTablet" class="ScrollPrompt">
         <h3></h3>
         <img src="../assets/scroll-prompt.svg" alt="scroll-down">
     </div>
@@ -10,26 +10,28 @@ export default {
   name: "ScrollPrompt",
   computed: {
     atleastTablet(){
-      console.log('accessed atleast Tablet')
-      if(window.innerWidth >= '1024px')
+      if(window.innerWidth >= 1024){
         return true;
+      }
       else return false;  
     }
   },
   mounted(){
-    let textField = this.$el.querySelector('h3');
-    let Typewriter = require('typewriter-effect/dist/core');
+    if(this.atleastTablet){
+      let textField = this.$el.querySelector('h3');
+      let Typewriter = require('typewriter-effect/dist/core');
 
-    let typewriter = new Typewriter(textField, {
-      loop: false,
-    });
+      let typewriter = new Typewriter(textField, {
+        loop: false,
+      });
 
-    typewriter
-      .changeCursor(" ")
-      .pauseFor(1500)
-      .typeString('SCROLLDOWN')
-      .start();
-  }  
+      typewriter
+        .changeCursor(" ")
+        .pauseFor(1500)
+        .typeString('SCROLLDOWN')
+        .start();
+    }  
+  }
 }
 </script>
 
