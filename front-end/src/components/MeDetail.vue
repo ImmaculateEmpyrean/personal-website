@@ -17,8 +17,8 @@
 
         <!-- block one Video Games -->
         <div class="block">
-            <div class="columns">
-                <div class="column">
+            <div class="columns mobile-flex">
+                <div class="column" id="videoGame-main-card">
                     <div class="card">
                         <div class="card-image">
                             <figure class="image is-4by3"> <img src="@/assets/gameboy.svg" alt="Placeholder image"> </figure>
@@ -54,7 +54,7 @@
                         </footer>
                     </div>
                 </div>
-                <div class="column is-two-thirds tri-cards">
+                <div class="column is-two-thirds tri-cards" id="videoGame-secondary-card">
                     <div class="block">
                         <div class="box">
                             <h1 class="title is-1">Video Games</h1>
@@ -93,8 +93,8 @@
         </div>
         <!-- block two Anime -->
         <div class="block">
-            <div class="columns">
-                <div class="column card-empyr-order empyr-column">
+            <div class="columns mobile-flex">
+                <div class="column" id="anime-main-card">
                     <!-- the card-empyr-order is super arbitrary and must be changed -->
                     <div class="card">
                         <div class="card-image">
@@ -133,7 +133,7 @@
                         </footer>
                     </div>
                 </div>
-                <div class="column is-two-thirds tri-cards">
+                <div class="column is-two-thirds tri-cards" id="anime-secondary-card">
                     <div class="block">
                         <div class="box">
                             <h1 class="title is-1">Anime</h1>
@@ -173,8 +173,8 @@
         </div>
         <!-- block three Books -->
         <div class="block">
-            <div class="columns">
-                <div class="column">
+            <div class="columns mobile-flex">
+                <div class="column" id="book-main-card">
                     <div class="card">
                         <div class="card-image">
                             <figure class="image is-4by3"> <img src="@/assets/road_to_knowledge.svg" alt="Placeholder image"> </figure>
@@ -210,7 +210,7 @@
                         </footer>
                     </div>
                 </div>
-                <div class="column is-two-thirds tri-cards">
+                <div class="column is-two-thirds tri-cards" id="book-secondary-card">
                     <div class="block">
                         <div class="box">
                             <h1 class="title is-1">Book Reading</h1>
@@ -332,6 +332,8 @@ export default {
 
 
 <style lang="scss" scoped>
+   @import '../assets/sass/_settings.scss'; //my settings
+
     //customizing bulma
     @import 'bulma/sass/utilities/initial-variables';
     @import 'bulma/sass/utilities/functions';
@@ -341,7 +343,7 @@ export default {
     @import 'bulma/bulma.sass';
 
     //my styling
-    
+
     .tri-cards{
         display: flex;
         flex-direction: column;
@@ -351,5 +353,39 @@ export default {
     //used in columns to align something to the end of said column
     .align-flex-end{
         align-self:flex-end;
+    }
+
+    .mobile-flex{
+        display: flex;
+        flex-direction: column;
+
+        @include atleast-desktop{
+            flex-direction: row;
+        }
+    }
+    //align the cards properly
+    #videoGame-main-card{
+        order: 1;
+        @include atleast-desktop{ order: 0;}
+    }
+    #videoGame-secondary-card{
+        order: 0;
+        @include atleast-desktop{ order: 1; }
+    }
+
+    #anime-main-card{
+        order: 1;
+    }
+    #anime-secondary-card{
+        order: 0;
+    }
+
+    #book-main-card{
+        order: 1;
+        @include atleast-desktop{ order: 0;}
+    }
+    #book-secondary-card{
+        order: 0;
+        @include atleast-desktop{ order: 1; }
     }
 </style>
