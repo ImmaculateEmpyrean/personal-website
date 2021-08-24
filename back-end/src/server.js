@@ -17,9 +17,9 @@ const nodemailer = require("nodemailer");
 app.use(express.static("./www"));
 
 //setup the server
-let port = process.env.PORT || 4000;
+let port = process.env.PORT || 4001;
 app.listen(port, function () {
-	console.log("server running on port 4000");
+	console.log(`server running on port ${process.env.PORT} and if not on 4001`);
 });
 
 //get requests
@@ -116,7 +116,7 @@ app.post("/leaveMessageHere", async function (req, res) {
 			replying to the mail I recieve very seriously and hopefully I can prove that
 			to you too.
 		</p>
-		<p>Should you require any assistance from my bot, please send in an email to 'empyreanBot@gmail.com' the bot watches this mail address regularly.
+		<p>Should you require any assistance from my bot, please send in an email to 'empyreanbot@zohomail.in' the bot watches this mail address regularly.
 			The bot is extremely smart and can help you out in most cases without even notifying me.
 			read the bot-help page for assistance on how to communicate with the bot.
 		</p>
@@ -142,12 +142,12 @@ app.post("/leaveMessageHere", async function (req, res) {
 
 async function sendMail(to, subject, message) {
 	let transporter = nodemailer.createTransport({
-		host: "smtp.gmail.com",
-		port: 587,
-		secure: false, // true for 465, false for other ports
+		host: "smtp.zoho.in",
+		port: 465,
+		secure: true, // true for 465, false for other ports
 		auth: {
-			user: "botempyrean@gmail.com", // bot uses this gmail account only
-			pass: "ns782110", // associated password with the user name
+			user: "empyreanbot@zohomail.in", 
+			pass: "a0EBTFvWHwfp"
 		},
 		tls: {
 			rejectUnauthorized: false,
@@ -156,7 +156,7 @@ async function sendMail(to, subject, message) {
 
 	// send mail with defined transport object
 	await transporter.sendMail({
-		from: '"bot empyrean" <botempyrean@gmail.com>', // sender address
+		from: '"bot empyrean" <empyreanbot@zohomail.in>', // sender address
 		to: to, //reciever
 		subject: subject,
 		html: message,
