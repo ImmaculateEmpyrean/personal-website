@@ -44,7 +44,7 @@ export default {
 
     position: absolute;
     bottom: 0;
-    left: 5%;
+    right: 5%;
   }
 
   h3{
