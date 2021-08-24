@@ -92,14 +92,6 @@ export default {
                     that.showScrollBar = false;
                     that.$forceUpdate();
                     that.$el.classList.add('collapsed');
-
-
-                     let page = document.querySelector('#app > .page');
-                     if(that.isOverflownY(page)){
-                        //this page can be scrolled by normal means
-                        page.style.height = 'auto'; //this is done so as to allow the calculation of height in phones excluding the url bar
-                        page.style.overflowY = "auto";
-                     }
                 },2000);
             }
         },

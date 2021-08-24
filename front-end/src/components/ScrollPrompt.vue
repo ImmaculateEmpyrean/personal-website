@@ -1,5 +1,5 @@
 <template>
-    <div v-if="atleastTablet" class="ScrollPrompt">
+    <div v-if="atleastDesktop" class="ScrollPrompt">
         <h3></h3>
         <img src="../assets/scroll-prompt.svg" alt="scroll-down">
     </div>
@@ -9,7 +9,7 @@
 export default {
   name: "ScrollPrompt",
   computed: {
-    atleastTablet(){
+    atleastDesktop(){
       if(window.innerWidth >= 1024){
         return true;
       }
@@ -17,7 +17,7 @@ export default {
     }
   },
   mounted(){
-    if(this.atleastTablet){
+    if(this.atleastDesktop){
       let textField = this.$el.querySelector('h3');
       let Typewriter = require('typewriter-effect/dist/core');
 

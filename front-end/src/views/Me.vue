@@ -49,6 +49,12 @@ export default {
             imageInvertColor: false
         }
     },
+    computed: {
+        isMobile: function(){
+            if(window.innerWidth < 768) return true;
+            else return false;
+        }
+    },
     props:{
         processWheel:{
             type: Boolean,
@@ -98,7 +104,7 @@ export default {
         },
 
         processMeDetail() {
-            if(this.showMeDetail == false)
+            if(this.showMeDetail === false)
                 this.showMeDetailWindow();
             else
                 this.hideMeDetailWindow();
@@ -107,9 +113,9 @@ export default {
         showMeDetailWindow(){
             let that = this;
             this.$emit('disableProcessWheel');
-
             this.$emit('hideScrollIndicator');
-            setTimeout(function(){
+
+            let internalShowMeDetail = function(){
                 let content =  that.$el.querySelector('.container');
                 content.classList.add('inverted-color');
 
@@ -124,15 +130,25 @@ export default {
                 const textBoxInternalStyle = getComputedStyle(textBoxInternal);
                 content.style.maxHeight = textBoxInternalStyle.height;
                 textBoxInternal.classList.add('add-padding-left');
-            },2000)
-
-            setTimeout(function(){
+            }
+            let internalShowMeDetailDone = function(){
                 that.showMeDetail = true;
+                    setTimeout(function(){
+                        that.$emit('enablePageScrolling');
+                    },2000)
+            }
 
+            if(this.isMobile){
+                internalShowMeDetail();
                 setTimeout(function(){
-                    that.$emit('enablePageScrolling');
+                    internalShowMeDetailDone();
                 },2000);
-            },4000);
+            } else {
+                setTimeout(internalShowMeDetail,2000);
+                setTimeout(function(){
+                    internalShowMeDetailDone();
+                },4000);
+            }
         },
         hideMeDetailWindow(){
             let that = this;
