@@ -239,6 +239,15 @@
 				</div>
 			</section>
 
+			<!-- Portfolio -->
+			<section class="section" id="portfolio">
+				<div class="section-heading">
+					<h3 class="title is-2">My Projects</h3>
+					<h4 class="subtitle is-5">Have A Look At What I Have Already Done Before You Choose To Hire Me!</h4>
+					<ProjectsShowcase />	
+				</div>
+			</section>
+
 			<!-- Resume -->
 			<section class="section" id="resume">
 				<div class="section-heading">
@@ -252,18 +261,19 @@
 					</a>
 				</div>
 			</section>
-
-			<!-- Portfolio -->
-			<section class="section" id="portfolio"></section>
 		</div>
 	</div>
 </template>
 
 <script>
 import JsFileDownloader from 'js-file-downloader';
+import ProjectsShowcase from '@/components/portfolio-detail/ProjectsShowcase.vue';
 
 export default {
 	name: "PortfolioDetail",
+	components:{
+		ProjectsShowcase
+	},
 	methods:{
 		routeToLeaveMessageHerePage(e){
 			e.preventDefault();
