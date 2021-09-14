@@ -1,17 +1,27 @@
 <template>
-<div id="ProjectsShowcase">
-  <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
-    <li class="tab"><a href="#test1">Test 1</a></li>
-    <li class="tab"><a class="active" href="#test2">Test 2</a></li>
-    <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
-    <li class="tab"><a href="#test4">Test 4</a></li>
-    <li class="tab"><a href="#test0">Test 5</a></li>
+<div class="row" id="ProjectsShowcase">
+  <ul class="tabs tabs-fixed-width z-depth-1">
+    <li class="tab col"><a href="#Front-End">Front-End Web</a></li>
+    <li class="tab col"><a class="active" href="#Full-Stack">Full-Stack Web</a></li>
+    <li class="tab col"><a href="#Video-Game">Video-Game</a></li>
+    <li class="tab col"><a href="#Game-Engine">Game-Engine</a></li>
+    <li class="tab col"><a href="#Miscellenous">Misc</a></li>
   </ul>
-  <div id="test1" class="col s12"><p>Test 1</p></div>
-  <div id="test2" class="col s12"><p>Test 2</p></div>
-  <div id="test3" class="col s12"><p>Test 3</p></div>
-  <div id="test4" class="col s12"><p>Test 4</p></div>
-  <div id="test0" class="col s12"><p>Test 5</p></div>
+  <div id="Front-End" class="col s12">
+    <h1>Front-End Placeholder</h1>
+  </div>
+  <div id="Full-Stack" class="col s12">
+    <h1>Full-Stack Placeholder</h1>
+  </div>
+  <div id="Video-Game" class="col s12">
+    <h1>Video-Game Placeholder</h1>
+  </div>
+  <div id="Game-Engine" class="col s12">
+    <h1>Game-Engine Placeholder</h1>
+  </div>
+  <div id="Miscellenous" class="col s12">
+    <h1>Misc Placeholder</h1>
+  </div>
 </div>
 </template>
 
@@ -19,15 +29,18 @@
 export default {
     name: 'ProjectsShowcase',
     mounted(){
-        require('materialize-css/dist/js/materialize.min.js');
-        let tabs = this.$el.querySelectorAll('.tabs');
-        tabs.forEach(function(element){
-            M.Tabs.init(element, {});
-        });
+        $('ul.tabs').tabs();
+        $(".fainted").click(function(){ $(".active").css("border","none"); $(".indicator").css("display","block"); });
     }
 }
 </script>
 
 <style lang="scss" scoped>
+    $primary-color: #e12a2a;
     @import 'materialize-css/sass/materialize.scss';
+
+    .tabs .indicator { display: none; }
+    .tabs .tab a.active { 
+      border-bottom: 2px solid #e12a2a; 
+    }
 </style>
