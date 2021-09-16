@@ -11,7 +11,7 @@
     <h1>Front-End Placeholder</h1>
   </div>
   <div id="Full-Stack" class="col s12">
-    <h1>Full-Stack Placeholder</h1>
+    <ProjectCard />
   </div>
   <div id="Video-Game" class="col s12">
     <h1>Video-Game Placeholder</h1>
@@ -26,8 +26,13 @@
 </template>
 
 <script>
+import ProjectCard from './ProjectCard.vue';
+
 export default {
     name: 'ProjectsShowcase',
+    components:{
+      ProjectCard
+    },
     mounted(){
         $('ul.tabs').tabs();
         $(".fainted").click(function(){ $(".active").css("border","none"); $(".indicator").css("display","block"); });
