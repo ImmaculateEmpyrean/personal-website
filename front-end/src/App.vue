@@ -15,7 +15,7 @@
         @setTransitionZoom="setTransitionZoom"
       />
       <div class="router-content">
-        <ScrollIndicator v-if="atleastTablet" ref="ScrollIndicator"/>
+        <ScrollIndicator v-if="atleastTablet" ref="ScrollIndicator"  @setTransitionZoom="setTransitionZoom"/>
         <router-view v-slot="{ Component }">
           <transition 
             name="routerTransition"

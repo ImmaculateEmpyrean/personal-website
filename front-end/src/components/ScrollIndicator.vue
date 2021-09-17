@@ -4,10 +4,10 @@
         <svg width="70" height="140" viewBox="0 0 70 140" fill="none" xmlns="http://www.w3.org/2000/svg" 
              class="animate__animated" v-show="showScrollBar && showVertical">
 
-            <rect y="0"   width="35"  height="5" rx="2.5" fill="black"/>
-            <rect y="45"  width="35"  height="5" rx="2.5" fill="black"/>
-            <rect y="90"  width="35"  height="5" rx="2.5" fill="black"/>
-            <rect y="135" width="35"  height="5" rx="2.5" fill="black"/>
+            <rect y="0"   width="35"  height="5" rx="2.5" fill="black" @click="gotoHome"/>
+            <rect y="45"  width="35"  height="5" rx="2.5" fill="black" @click="gotoPortfolio"/>
+            <rect y="90"  width="35"  height="5" rx="2.5" fill="black" @click="gotoMe"/>
+            <rect y="135" width="35"  height="5" rx="2.5" fill="black" @click="gotoContact"/>
 
         </svg>
 
@@ -122,6 +122,22 @@ export default {
                     else svg.classList.add('animate__fadeInUp');
                 },2000)
             }
+        },
+        gotoContact(){
+            this.$emit('setTransitionZoom');
+            this.$router.push('/ContactMe');
+        },
+        gotoMe(){
+            this.$emit('setTransitionZoom');
+            this.$router.push('/Me');
+        },
+        gotoPortfolio(){
+            this.$emit('setTransitionZoom');
+            this.$router.push('/DevJourney');
+        },
+        gotoHome(){
+            this.$emit('setTransitionZoom');
+            this.$router.push('/');
         }
     },
       mounted(){
