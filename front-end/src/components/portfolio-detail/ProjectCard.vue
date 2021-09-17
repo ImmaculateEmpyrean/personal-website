@@ -99,7 +99,13 @@ $primary-color: #e12a2a;
 	padding: $spacing-normal;
 
 	display: flex;
-	column-gap: $spacing-normal;
+	flex-direction: column;
+
+	@include atleast-desktop{
+		flex-direction: row;
+		column-gap: $spacing-normal;
+	}
+	
 }
 .left {
 	flex: 1 1 40%;
