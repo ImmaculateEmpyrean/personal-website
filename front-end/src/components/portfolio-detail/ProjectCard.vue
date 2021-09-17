@@ -1,9 +1,9 @@
 <template>
-	<div class="projectCard-wrapper card">
+	<div class="projectCard-wrapper card hoverable">
 		<div class="left">
-			<div class="card left-card sticky-action">
-				<div class="card-image waves-effect waves-block waves-light">
-					<img class="activator" :src="projectImage" />
+			<div class="card left-card">
+				<div class="card-image ">
+					<img class="materialboxed" :src="projectImage" />
 				</div>
 				<div class="card-content">
 					<span class="card-title activator grey-text text-darken-4">
@@ -84,6 +84,9 @@ export default {
 			default: "https://www.google.com",
 		},
 	},
+	mounted() {
+		$(".materialboxed").materialbox();
+	},
 };
 </script>
 
@@ -113,6 +116,11 @@ $primary-color: #e12a2a;
 	justify-content: space-between;
 }
 
+.skills-used {
+	display: flex;
+	justify-content: space-between;
+	width: 60%;
+}
 .card-action {
 	display: flex;
 	justify-content: space-between;
