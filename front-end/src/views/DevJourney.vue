@@ -222,6 +222,17 @@ export default {
             showScrollIndicator: true,
             pageNumber: 2
         });
+
+        if("showPortfolioOnMount" in this.$route.params){
+            setTimeout(function(){
+                this.processDevDetail();
+            }.bind(this),2000);
+            setTimeout(function(){
+                document.getElementById('myProjectsHeading').scrollIntoView({
+                     behavior: 'smooth'
+                });
+            },8500)
+        }
     },
 }
 </script>

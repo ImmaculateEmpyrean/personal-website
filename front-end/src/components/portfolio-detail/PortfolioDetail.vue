@@ -242,7 +242,7 @@
 			<!-- Portfolio -->
 			<section class="section" id="portfolio">
 				<div class="section-heading">
-					<h3 class="title is-2">My Projects</h3>
+					<h3 class="title is-2" id="myProjectsHeading">My Projects</h3>
 					<h4 class="subtitle is-5">Have A Look At What I Have Already Done Before You Choose To Hire Me!</h4>
 					<ProjectsShowcase />	
 				</div>

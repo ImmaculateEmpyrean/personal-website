@@ -1,10 +1,10 @@
 <template>
     <Content :heading1="heading1" :heading2="heading2" :caption="caption" :description="description"
-             :showCaption="showCaption" :showButton="showButton" :imagePath="imagePath" 
-             @wheel="wheelEvent" v-touch:swipe.top="swipeUp" />
+             :showCaption="showCaption" :showButton="true" :showButtonAux="true"  :imagePath="imagePath"
+             buttonText="View Portfolio" buttonTextAux="Contact Me" 
+             @wheel="wheelEvent" v-touch:swipe.top="swipeUp" 
+             @buttonClicked="viewPortfolio" @buttonClickedAux="gotoContactMe"/>
 </template>
-
-
 
 <script>
 import Content from '@/components/Content.vue';
@@ -21,7 +21,6 @@ export default {
         caption: "portfolio",
         showCaption: true,
         description: "I program video games and fullstack websites for a living while pursuing my video game engine as a passionate hobby.",
-        showButton: false,
         imagePath: require("@/assets/home.png"),
 
         next: "DevJourney",
@@ -50,6 +49,19 @@ export default {
         await this.$emit("renderNextView");
         this.$router.push(this.next);
       }
+    },
+    viewPortfolio(){
+      this.$emit('renderNextView');
+      this.$router.push({
+        name: 'DevJourney',
+        params: {
+          showPortfolioOnMount: true
+        }
+      });
+    },
+    gotoContactMe(){
+      this.$emit('renderNextView');
+			this.$router.push('/ContactMe');
     }
   },
 
