@@ -6,15 +6,15 @@
 					<img class="materialboxed" :src="projectImage" />
 				</div>
 				<div class="card-content">
-					<span class="card-title activator grey-text text-darken-4">
-						{{ projectTitle }}
+					<span class="card-title activator title is-4">
+						<p class="content">{{ projectTitle }}</p>
 					</span>
-					<p>
+					<p style="padding-top: 7px">
 						<slot name="projectDescription"> </slot>
 					</p>
 					<br />
-					<span class="card-title grey-text text-darken-4">Skills Used - </span>
-					<div class="skills-used">
+					<span class="card-title title is-5">Skills Used - </span>
+					<div class="skills-used" style="margin-top: 7px">
 						<ul>
 							<slot name="listSkillsLeft"></slot>
 						</ul>
@@ -23,7 +23,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="card-action">
+				<div class="card-action" style="padding: 1.5rem">
 					<a :href="projectLiveVersionLink" class="link">
 						<i class="fas fa-cloud"></i> View Live Version
 					</a>
@@ -37,25 +37,25 @@
 		<div class="right">
 			<div class="myRole card">
 				<div class="card-content">
-					<span class="card-title">My Role</span>
+					<div class="card-title title is-5">My Role</div>
 					<slot name="myRole"></slot>
 				</div>
 			</div>
 			<div class="projectDifficulties card">
 				<div class="card-content">
-					<span class="card-title">Project Difficulty</span>
+					<div class="card-title title is-5">Project Difficulty</div>
 					<slot name="projectDifficulties"></slot>
 				</div>
 			</div>
 			<div class="mySolution card">
 				<div class="card-content">
-					<span class="card-title">My Solution</span>
+					<div class="card-title title is-5">My Solution</div>
 					<slot name="mySolution"></slot>
 				</div>
 			</div>
 			<div class="NotableFeatures card">
 				<div class="card-content">
-					<span class="card-title">Notable Features</span>
+					<div class="card-title title is-5">Notable Features</div>
 					<slot name="notableFeatures"></slot>
 				</div>
 			</div>
@@ -93,7 +93,17 @@ export default {
 <style lang="scss" scoped>
 $primary-color: #e12a2a;
 @import "@/assets/sass/_settings.scss";
-@import "materialize-css/sass/materialize.scss";
+@import "@/assets/sass/_text.scss";
+// @import "materialize-css/sass/materialize.scss";
+
+//customizing bulma
+@import "bulma/sass/utilities/initial-variables";
+@import "bulma/sass/utilities/functions";
+@import "@/assets/sass/_settings.scss";
+
+$link: #e12a2a;
+
+@import "bulma/bulma.sass";
 
 .projectCard-wrapper {
 	padding: $spacing-normal;
@@ -125,7 +135,11 @@ $primary-color: #e12a2a;
 .skills-used {
 	display: flex;
 	justify-content: space-between;
-	width: 60%;
+	width: 100%;
+
+	@include atleast-tablet{
+		width: 60%;
+	}
 }
 .card-action {
 	display: flex;

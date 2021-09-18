@@ -92,17 +92,17 @@
 					<ul
 						style=" list-style-type: square !important; display: flex; flex-direction: column; row-gap:10px;"
 					>
-						<li>Play Flappy-Bird in Desktop Tablet and Mobile.</li>
-						<li>Able To View Personal HighScore As It Is Being Saved.</li>
-						<li>
+						<li style=" list-style-type: square !important">Play Flappy-Bird in Desktop Tablet and Mobile.</li>
+						<li style=" list-style-type: square !important">Able To View Personal HighScore As It Is Being Saved.</li>
+						<li style=" list-style-type: square !important">
 							View HighScores From Around The World As HighScores Are Uploaded
 							To The Server Automatically.
 						</li>
-						<li>
+						<li style=" list-style-type: square !important">
 							Save Your Name And Country Of Origin With Your HighScore For
 							Viewing Around The World.
 						</li>
-						<li>
+						<li style=" list-style-type: square !important">
 							View Tips and Improvement Techniques To Further Improve One's
 							Game.
 						</li>
