@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue';
 import DevJourney from '../views/DevJourney.vue';
-import Me from '../views/Me.vue';
+// import Me from '../views/Me.vue';
 import ContactMe from '../views/ContactMe.vue';
 
 import LoadingScreen from '../views/LoadingScreen.vue';
@@ -19,11 +19,11 @@ const routes = [
     name: 'DevJourney',
     component: DevJourney
   },
-  {
-    path: '/Me',
-    name: 'Me',
-    component: Me
-  },
+  // {
+  //   path: '/Me',
+  //   name: 'Me',
+  //   component: Me
+  // },
   {
     path: "/ContactMe",
     name: 'ContactMe',

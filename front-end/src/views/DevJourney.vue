@@ -55,7 +55,7 @@ export default {
             buttonTextAux: "Download My Resume",
             imagePath: require("@/assets/dev-journey.png"),
 
-            next: "Me",
+            next: "ContactMe",
             previous: "/",
 
             showDevDetail: false,

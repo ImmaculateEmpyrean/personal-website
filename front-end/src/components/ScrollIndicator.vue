@@ -6,9 +6,7 @@
 
             <rect y="0"   width="35"  height="5" rx="2.5" fill="black" @click="gotoHome"/>
             <rect y="45"  width="35"  height="5" rx="2.5" fill="black" @click="gotoPortfolio"/>
-            <rect y="90"  width="35"  height="5" rx="2.5" fill="black" @click="gotoMe"/>
-            <rect y="135" width="35"  height="5" rx="2.5" fill="black" @click="gotoContact"/>
-
+            <rect y="90"  width="35"  height="5" rx="2.5" fill="black" @click="gotoContact"/>
         </svg>
 
         <svg width="140" height="70" viewBox="0 0 140 70" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -17,8 +15,6 @@
             <rect y="70" width="35" height="5" rx="2.5" transform="rotate(-90 0 70)" fill="black"/>
             <rect x="45" y="70" width="35" height="5" rx="2.5" transform="rotate(-90 45 70)" fill="black"/>
             <rect x="90" y="70" width="35" height="5" rx="2.5" transform="rotate(-90 90 70)" fill="black"/>
-            <rect x="135" y="70" width="35" height="5" rx="2.5" transform="rotate(-90 135 70)" fill="black"/>
-            
         </svg>
 
 
@@ -126,10 +122,6 @@ export default {
         gotoContact(){
             this.$emit('setTransitionZoom');
             this.$router.push('/ContactMe');
-        },
-        gotoMe(){
-            this.$emit('setTransitionZoom');
-            this.$router.push('/Me');
         },
         gotoPortfolio(){
             this.$emit('setTransitionZoom');

@@ -1,8 +1,8 @@
 <template>
     <div class="main-menu hidden">
 			<ul>
-				<li><Button @buttonClicked="navToPortfolio" buttonText="Portfolio" :showButton="true" class="color-inverted full-width" /></li>
-				<li><Button @buttonClicked="navToMe" buttonText="About Me"  :showButton="true" class="color-inverted full-width" /></li>
+				<li><Button @buttonClicked="navToHome" buttonText="Home" :showButton="true" class="color-inverted full-width" /></li>
+				<li><Button @buttonClicked="navToPortfolio" buttonText="Portfolio"  :showButton="true" class="color-inverted full-width" /></li>
 				<li><Button @buttonClicked="navToContact" buttonText="Contact Information"  :showButton="true" class="color-inverted full-width" /></li>
 				<li><Button @buttonClicked="navToLeaveMessageHere" buttonText="Leave Message Here"  :showButton="true" class="color-inverted full-width" /></li>
 			</ul>
@@ -22,11 +22,11 @@ export default {
 			this.$emit('menuButtonClicked');
 			this.$router.push(route);
 		},
+		navToHome(){
+			this.nav('/');
+		},
 		navToPortfolio(){
 			this.nav('/DevJourney');
-		},
-		navToMe(){
-			this.nav('/Me');
 		},
 		navToContact(){
 			this.nav('/ContactMe');

@@ -26,7 +26,7 @@ export default {
             imagePath: require('@/assets/contact-me.png'),
 
             next: null,
-            previous: "Me"
+            previous: "DevJourney"
         }
     },
     methods:{
@@ -58,7 +58,7 @@ export default {
 
         this.$emit('updateScrollIndicator',{
             showScrollIndicator: true,
-            pageNumber: 4
+            pageNumber: 3
         });
     },
 }
