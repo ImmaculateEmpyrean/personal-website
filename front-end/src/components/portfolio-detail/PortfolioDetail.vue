@@ -77,74 +77,22 @@
 
 					<div class="column is-one-third">
 						<!-- Skills -->
-						<div class="box" style="min-height: 100%">
-							<h3 class="title is-4">Skills</h3>
-							<div>
-								<strong>JavaScript</strong>
-								<progress
-									class="progress is-link"
-									value="100"
-									max="100"
-								></progress>
-							</div>
-							<div>
-								<strong>Vue.js</strong>
-								<progress
-									class="progress is-link"
-									value="80"
-									max="100"
-								></progress>
-							</div>
-							<div>
-								<strong>Node.js</strong>
-								<progress
-									class="progress is-link"
-									value="80"
-									max="100"
-								></progress>
-							</div>
-							<div class="pb-4">
-								<strong>Bulma</strong>
-								<progress
-									class="progress is-link"
-									value="95"
-									max="100"
-								></progress>
-							</div>
-
-							<div>
-								<strong>C++</strong>
-								<progress
-									class="progress is-link"
-									value="100"
-									max="100"
-								></progress>
-							</div>
-							<div>
-								<strong>Godot</strong>
-								<progress
-									class="progress is-link"
-									value="75"
-									max="100"
-								></progress>
-							</div>
-							<div class="pb-4">
-								<strong>Unreal Engine 4</strong>
-								<progress
-									class="progress is-link"
-									value="65"
-									max="100"
-								></progress>
-							</div>
-							<div>
-								<strong>Databases</strong>
-								<progress
-									class="progress is-link"
-									value="100"
-									max="100"
-								></progress>
+						<div class="box" id="skillBoxesCard" style="min-height: 100%">
+							<h3 class="title is-4">Core Skills</h3>
+							<div class="skill-box-container">
+								<div class="left">
+									<SkillBox title="Vue3" :iconSrc="require('@/assets/Vue3-logo.svg')"/>
+									<SkillBox title="Relational Databases" :iconSrc="require('@/assets/DB-logo.svg')"/>
+									<SkillBox title="Node.js" :iconSrc="require('@/assets/NodeJs-logo.svg')"/>
+								</div>
+								<div class="right">
+									<SkillBox title="C++" :iconSrc="require('@/assets/Cpp-logo.svg')"/>
+									<SkillBox title="Godot" :iconSrc="require('@/assets/Godot-logo.svg')"/>
+									<SkillBox title="UE4" :iconSrc="require('@/assets/UE4-logo.svg')"/>
+								</div>
 							</div>
 						</div>
+
 					</div>
 				</div>
 
@@ -269,10 +217,13 @@
 import JsFileDownloader from 'js-file-downloader';
 import ProjectsShowcase from '@/components/portfolio-detail/ProjectsShowcase.vue';
 
+import SkillBox from './SkillBox.vue';
+
 export default {
 	name: "PortfolioDetail",
 	components:{
-		ProjectsShowcase
+		ProjectsShowcase,
+		SkillBox
 	},
 	methods:{
 		routeToLeaveMessageHerePage(e){
@@ -320,5 +271,42 @@ $link: #e12a2a;
 
 .image-circular {
 	border-radius: 50%;
+}
+
+#skillBoxesCard{
+	height: 100%;
+	.skill-box-container{
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+
+		@include atleast-tablet{
+			flex-direction: row;
+			justify-content: space-around;
+		}
+		@include atleast-desktop{
+			justify-content: space-between;
+		}
+
+		.left{
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+
+			row-gap: $spacing-small;
+			margin-bottom: $spacing-small;
+		
+			height: 85%;
+		}
+		.right{
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+
+			row-gap: $spacing-small;
+
+			height: 85%;
+		}
+	}
 }
 </style>
