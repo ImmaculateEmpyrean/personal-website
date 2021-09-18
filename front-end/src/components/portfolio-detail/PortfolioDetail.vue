@@ -82,7 +82,7 @@
 							<div class="skill-box-container">
 								<div class="left">
 									<SkillBox title="Vue3" :iconSrc="require('@/assets/Vue3-logo.svg')"/>
-									<SkillBox title="Relational Databases" :iconSrc="require('@/assets/DB-logo.svg')"/>
+									<SkillBox title="Databases" :iconSrc="require('@/assets/DB-logo.svg')"/>
 									<SkillBox title="Node.js" :iconSrc="require('@/assets/NodeJs-logo.svg')"/>
 								</div>
 								<div class="right">
