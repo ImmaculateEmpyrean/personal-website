@@ -94,8 +94,6 @@ export default {
 $primary-color: #e12a2a;
 @import "@/assets/sass/_settings.scss";
 @import "@/assets/sass/_text.scss";
-// @import "materialize-css/sass/materialize.scss";
-
 //customizing bulma
 @import "bulma/sass/utilities/initial-variables";
 @import "bulma/sass/utilities/functions";
@@ -106,6 +104,7 @@ $link: #e12a2a;
 @import "bulma/bulma.sass";
 
 .projectCard-wrapper {
+    margin-top: $spacing-large;
 	padding: $spacing-normal;
 
 	display: flex;
